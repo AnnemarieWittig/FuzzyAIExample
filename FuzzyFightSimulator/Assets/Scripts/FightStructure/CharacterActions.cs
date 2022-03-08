@@ -16,4 +16,10 @@ public class CharacterActions : MonoBehaviour
 
         yield return defender.GetIsDead();
     }
+
+    public IEnumerator InitiateDefense(Character character, DialogueUI dialogueUI)
+    {
+        yield return StartCoroutine(dialogueUI.RunDialogue(character.defenseChoice));
+        character.StartDefense();
+    }
 }

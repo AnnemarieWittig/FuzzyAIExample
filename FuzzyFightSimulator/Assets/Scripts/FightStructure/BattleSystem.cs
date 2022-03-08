@@ -13,12 +13,12 @@ public class BattleSystem : MonoBehaviour
     [Header("Player")]
     [SerializeField] public GameObject playerPrefab;
     [SerializeField] public Transform playerPosition;
-    private Character playerChar;
+    private Character playerCharacter;
 
     [Header("Enemy")]
     [SerializeField] public GameObject enemyPrefab;
     [SerializeField] public Transform enemyPosition;
-    private Character enemyChar;
+    private Character enemyCharacter;
 
     [Header("UI")]
     [SerializeField] public DialogueObject initialDialogue;
@@ -37,45 +37,25 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator PlayerTurn()
     {
-        yield return StartCoroutine(dialogueUI.RunDialogue(playerChar.generalChoice));
-    }
-
-    private IEnumerator EnemyTurn()
-    {
-        yield return StartCoroutine(dialogueUI.RunDialogue(enemyChar.generalChoice));
-        if (true)
-        {
-            StartCoroutine(EnemyAttack());
-        }
-    }
-
-    public IEnumerator PlayerHeal()
-    {
-        playerChar.Heal(5);
-
-        playerWindow.SetHP(playerChar.currentHP);
-        yield return StartCoroutine(dialogueUI.RunDialogue(playerChar.attackChoice));
-
-        state = BattleState.ENEMYTURN;
-        StartCoroutine(EnemyTurn());
-
+        playerCharacter.StopDefense();
+        yield return StartCoroutine(dialogueUI.RunDialogue(playerCharacter.generalChoice));
     }
 
     public IEnumerator PlayerAttack()
     {
-        yield return StartCoroutine(actions.InitiateAttack(playerChar, enemyChar, enemyWindow, dialogueUI));
+        yield return StartCoroutine(actions.InitiateAttack(playerCharacter, enemyCharacter, enemyWindow, dialogueUI));
         moveToEnemyTurn();
     }
 
-    private IEnumerator EnemyAttack()
+    public IEnumerator PlayerDefense()
     {
-        yield return StartCoroutine(actions.InitiateAttack(enemyChar, playerChar, playerWindow, dialogueUI));
-        moveToPlayerTurn();
+        yield return StartCoroutine(actions.InitiateDefense(playerCharacter, dialogueUI));
+        moveToEnemyTurn();
     }
 
     private void moveToEnemyTurn()
     {
-        bool end = CheckWinCondition(playerChar, enemyChar);
+        bool end = CheckWinCondition();
         if (!end)
         {
             state = BattleState.ENEMYTURN;
@@ -83,10 +63,32 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    private IEnumerator EnemyTurn()
+    {
+        enemyCharacter.StopDefense();
+        yield return StartCoroutine(dialogueUI.RunDialogue(enemyCharacter.generalChoice));
+        if (true)
+        {
+            StartCoroutine(EnemyAttack());
+        }
+    }
+
+    private IEnumerator EnemyAttack()
+    {
+        yield return StartCoroutine(actions.InitiateAttack(enemyCharacter, playerCharacter, playerWindow, dialogueUI));
+        moveToPlayerTurn();
+    }
+
+    private IEnumerator EnemyDefense()
+    {
+        yield return StartCoroutine(actions.InitiateDefense(enemyCharacter, dialogueUI));
+        moveToPlayerTurn();
+    }
+
     private void moveToPlayerTurn()
     {
-        Debug.Log(playerChar.GetIsDead());
-        bool end = CheckWinCondition(playerChar, enemyChar);
+        Debug.Log(playerCharacter.GetIsDead());
+        bool end = CheckWinCondition();
         if (!end)
         {
             state = BattleState.PLAYERTURN;
@@ -94,20 +96,34 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    private bool CheckWinCondition(Character player, Character enemy)
+    private bool CheckWinCondition()
     {
-        if (player.GetIsDead())
+        if (playerCharacter.GetIsDead())
         {
-            StartCoroutine(EndBattle(enemy.winMessage));
+            StartCoroutine(EndBattle(enemyCharacter.winMessage));
             return true;
         }
-        else if (enemy.GetIsDead())
+        else if (enemyCharacter.GetIsDead())
         {
-            StartCoroutine(EndBattle(player.winMessage));
+            StartCoroutine(EndBattle(playerCharacter.winMessage));
             return true;
         }
         else { return false; }
 
+    }
+
+    public IEnumerator CharacterFlees()
+    {
+        if (state == BattleState.PLAYERTURN)
+        {
+            yield return StartCoroutine(dialogueUI.RunDialogue(playerCharacter.flightChoice));
+            StartCoroutine(EndBattle(enemyCharacter.winMessage));
+        }
+        else if (state == BattleState.ENEMYTURN)
+        {
+            yield return StartCoroutine(dialogueUI.RunDialogue(enemyCharacter.flightChoice));
+            StartCoroutine(EndBattle(playerCharacter.winMessage));
+        }
     }
 
     private IEnumerator EndBattle(DialogueObject dialogueObject)
@@ -119,16 +135,16 @@ public class BattleSystem : MonoBehaviour
     private void InitializeVariables()
     {
         GameObject playerGO = Instantiate(playerPrefab, playerPosition);
-        playerChar = playerGO.GetComponent<Character>();
+        playerCharacter = playerGO.GetComponent<Character>();
 
         GameObject enemyGO = Instantiate(enemyPrefab, enemyPosition);
-        enemyChar = enemyGO.GetComponent<Character>();
+        enemyCharacter = enemyGO.GetComponent<Character>();
     }
 
     private IEnumerator InitializeFight()
     {
-        playerWindow.Initialize(playerChar);
-        enemyWindow.Initialize(enemyChar);
+        playerWindow.Initialize(playerCharacter);
+        enemyWindow.Initialize(enemyCharacter);
 
         yield return StartCoroutine(dialogueUI.RunDialogue(initialDialogue));
         state = BattleState.PLAYERTURN;

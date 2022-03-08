@@ -46,14 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: A Rock
   level: 999
-  damage: 50
   maxHP: 30
-  currentHP: 25
+  currentHP: 30
+  damage: 10
+  hitChance: 0
   winMessage: {fileID: 11400000, guid: eb0622811f8678042b14b2eeb2cc36c8, type: 2}
   attackAgainstDefender: {fileID: 11400000, guid: afac45ab24953d2439c722edd3877136, type: 2}
   attackAgainstOpen: {fileID: 11400000, guid: 0685486fa9dd84045adf05d653733dcb, type: 2}
   generalChoice: {fileID: 11400000, guid: 3a22da01a84833d42813c5da0f486d8a, type: 2}
   attackChoice: {fileID: 11400000, guid: 794a81aee512a8348abbaf86c80f73b9, type: 2}
+  defenseChoice: {fileID: 11400000, guid: 3d76b60f10030ba4dae2363c1272681f, type: 2}
+  flightChoice: {fileID: 11400000, guid: 49bd0ef0ef3868c4b973c1cf9aef0eb6, type: 2}
+  animator: {fileID: 0}
 --- !u!1 &3768451511469723272
 GameObject:
   m_ObjectHideFlags: 0

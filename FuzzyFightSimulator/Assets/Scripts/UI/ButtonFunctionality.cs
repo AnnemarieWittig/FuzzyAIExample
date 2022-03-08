@@ -21,7 +21,7 @@ public class ButtonFunctionality : MonoBehaviour
         }
     }
 
-    public void OnHealButton()
+    public void OnDefenseButton()
     {
         BattleState state = battleSystem.GetBattleState();
         if (state != BattleState.PLAYERTURN)
@@ -30,7 +30,20 @@ public class ButtonFunctionality : MonoBehaviour
         }
         else
         {
-            StartCoroutine(battleSystem.PlayerHeal());
+            StartCoroutine(battleSystem.PlayerDefense());
+        }
+    }
+
+    public void OnFleeButton()
+    {
+        BattleState state = battleSystem.GetBattleState();
+        if (state != BattleState.PLAYERTURN)
+        {
+            return;
+        }
+        else
+        {
+            StartCoroutine(battleSystem.CharacterFlees());
         }
     }
 

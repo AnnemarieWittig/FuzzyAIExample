@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85ccda638576ba4f8e61b2ba85cd2fd, type: 3}
+  m_Name: wenig
+  m_EditorClassIdentifier: 
+  intersectionPoints:
+  - 0
+  - 0
+  - 65
+  - 100
+  equations:
+  - {fileID: 11400000, guid: 43a9515cbfa64f74da0245db2d50a36e, type: 2}
+  - {fileID: 11400000, guid: 52e64c6422934f34ca3037c9814d4814, type: 2}
+  - {fileID: 11400000, guid: 1c769fa1daedfac45af3d73ad77f3b03, type: 2}
+  label: Trainingseinheiten - Wenig

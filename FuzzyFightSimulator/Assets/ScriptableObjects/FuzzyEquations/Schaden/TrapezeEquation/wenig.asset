@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85ccda638576ba4f8e61b2ba85cd2fd, type: 3}
+  m_Name: wenig
+  m_EditorClassIdentifier: 
+  intersectionPoints:
+  - 0
+  - 7.5
+  - 17.5
+  - 50
+  equations:
+  - {fileID: 11400000, guid: 27b795df27b173f40ae1d555994da07e, type: 2}
+  - {fileID: 11400000, guid: 2808990ead985434da82d6e7a0737ba5, type: 2}
+  - {fileID: 11400000, guid: 7c991ba29c2e1a04f8205e2ae052db9f, type: 2}
+  label: Schaden - Wenig

@@ -13,10 +13,13 @@ public class Character : MonoBehaviour
     private DefenseState defenseState;
 
     [Header("Life Points")]
-    [SerializeField] public int damage;
     [SerializeField] public int maxHP;
     [SerializeField] public int currentHP;
     private bool isDead;
+
+    [Header("Attack Information")]
+    [SerializeField] public int damage;
+    [SerializeField] public float hitChance;
 
     [Header("Messages")]
     [SerializeField] public DialogueObject winMessage;
@@ -24,6 +27,11 @@ public class Character : MonoBehaviour
     [SerializeField] public DialogueObject attackAgainstOpen;
     [SerializeField] public DialogueObject generalChoice;
     [SerializeField] public DialogueObject attackChoice;
+    [SerializeField] public DialogueObject defenseChoice;
+    [SerializeField] public DialogueObject flightChoice;
+
+    [Header("Organisational")]
+    [SerializeField] public Animator animator;
 
 
     private void Start()
@@ -50,11 +58,16 @@ public class Character : MonoBehaviour
             isDead = false;
     }
 
-    public void Heal(int hp)
+    public void StartDefense()
     {
-        currentHP += hp;
-        if (currentHP > maxHP)
-            currentHP = maxHP;
+        defenseState = DefenseState.DEFENDING;
+        //animator.SetBool("defending", true);
+    }
+
+    public void StopDefense()
+    {
+        defenseState = DefenseState.OPEN;
+        //animator.SetBool("defending", false);
     }
 
     public bool GetIsDead() { return isDead; }
