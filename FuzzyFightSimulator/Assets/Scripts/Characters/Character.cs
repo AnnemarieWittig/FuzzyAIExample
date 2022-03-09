@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
     [Header("General Information")]
     [SerializeField] public string characterName;
     [SerializeField] public int level;
+    [SerializeField] public double trainingHours;
     private DefenseState defenseState;
 
     [Header("Life Points")]

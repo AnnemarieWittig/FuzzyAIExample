@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85ccda638576ba4f8e61b2ba85cd2fd, type: 3}
-  m_Name: Flucht
+  m_Script: {fileID: 11500000, guid: 9c7f9ffde95593c4c9dc780454718873, type: 3}
+  m_Name: 2_Angriff
   m_EditorClassIdentifier: 
   intersectionPoints:
   - 0
@@ -21,4 +21,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8fbc78eb5c9b3e3429c791df6ba001c4, type: 2}
   - {fileID: 11400000, guid: fd539c7e3fe7d4944b280305b022a261, type: 2}
   - {fileID: 11400000, guid: d1e2d63e8918a164f8e6e1733054fa27, type: 2}
-  label: Kampfentscheidung - Flucht
+  label: Kampfentscheidung - Angriff
+  correspondingEnum: 0

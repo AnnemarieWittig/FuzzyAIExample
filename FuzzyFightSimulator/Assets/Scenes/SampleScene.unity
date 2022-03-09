@@ -695,6 +695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 367855532}
   - component: {fileID: 367855531}
+  - component: {fileID: 367855533}
   m_Layer: 0
   m_Name: PlayerPosition
   m_TagString: Untagged
@@ -767,6 +768,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &367855533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367855530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3056f44b7d8fd4b8595c696d190ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiCharacter: {fileID: 0}
+  trefferchance: {fileID: 11400000, guid: 54f84576ddb72e04fb6f50934ded7122, type: 2}
+  lebenspunkte: {fileID: 11400000, guid: bf0c45978064a074085ef40999ddf4e3, type: 2}
+  schaden: {fileID: 11400000, guid: 2bf1a9f669d60844d81560bb392acf32, type: 2}
+  trainingseinheiten: {fileID: 11400000, guid: ed70596c36bf3f440868e1191166c54c, type: 2}
+  kampfentscheidung: {fileID: 11400000, guid: c3133c3a89467d247997d96a9c3c3567, type: 2}
 --- !u!1 &471520733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,8 +2030,10 @@ MonoBehaviour:
   state: 0
   playerPrefab: {fileID: 3751385650054508396, guid: 8958ba9726431c141a306e8a8bb7ced6, type: 3}
   playerPosition: {fileID: 367855532}
+  playerCharacterAI: {fileID: 367855533}
   enemyPrefab: {fileID: 1387715909481739446, guid: e5682ae713559714cbcc13a7a2c21154, type: 3}
   enemyPosition: {fileID: 1466009198}
+  enemyCharacterAI: {fileID: 1466009199}
   initialDialogue: {fileID: 11400000, guid: c0bf079e274a08349b968559a8313dd5, type: 2}
   playerWindow: {fileID: 1727677075}
   enemyWindow: {fileID: 1290496122}
@@ -2372,6 +2393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1466009198}
   - component: {fileID: 1466009197}
+  - component: {fileID: 1466009199}
   m_Layer: 0
   m_Name: EnemyPosition
   m_TagString: Untagged
@@ -2444,6 +2466,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1466009199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466009196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3056f44b7d8fd4b8595c696d190ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiCharacter: {fileID: 0}
+  trefferchance: {fileID: 11400000, guid: 54f84576ddb72e04fb6f50934ded7122, type: 2}
+  lebenspunkte: {fileID: 11400000, guid: bf0c45978064a074085ef40999ddf4e3, type: 2}
+  schaden: {fileID: 11400000, guid: 2bf1a9f669d60844d81560bb392acf32, type: 2}
+  trainingseinheiten: {fileID: 11400000, guid: ed70596c36bf3f440868e1191166c54c, type: 2}
+  kampfentscheidung: {fileID: 11400000, guid: c3133c3a89467d247997d96a9c3c3567, type: 2}
 --- !u!1 &1473786622
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85ccda638576ba4f8e61b2ba85cd2fd, type: 3}
-  m_Name: okay
+  m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
+  m_Name: 1_okay
   m_EditorClassIdentifier: 
   intersectionPoints:
   - 0
@@ -25,4 +25,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2c41b527b26458c45b1c22386d1edf88, type: 2}
   - {fileID: 11400000, guid: 0bf808399da4c8949a3f4316fddc4aae, type: 2}
   - {fileID: 11400000, guid: 4cdd4b50f7c7b4d42a6caae7733a35bf, type: 2}
-  label: Trefferchance - okay
+  label: Trefferchance - Okay
+  wishedOutcome: 0

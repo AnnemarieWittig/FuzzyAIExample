@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85ccda638576ba4f8e61b2ba85cd2fd, type: 3}
-  m_Name: viel
+  m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
+  m_Name: 0_wenig
   m_EditorClassIdentifier: 
   intersectionPoints:
   - 0
@@ -21,4 +21,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7cd13a7107838143bcdfd7a37a035ab, type: 2}
   - {fileID: 11400000, guid: 68579a534b607ed4da4ddf850c1ef5e0, type: 2}
   - {fileID: 11400000, guid: 3df00b1da6479a34d8ff3514b5cbc13b, type: 2}
-  label: Lebenspunkte - Viel
+  label: Lebenspunkte - Wenig
+  wishedOutcome: 2

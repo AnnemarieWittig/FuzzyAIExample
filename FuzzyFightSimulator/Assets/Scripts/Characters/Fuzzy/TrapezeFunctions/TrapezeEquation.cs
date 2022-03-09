@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Equations/TrapezeEquations")]
 public class TrapezeEquation : ScriptableObject, TrapezeEquationInterface
 {
     [SerializeField] public double[] intersectionPoints;
@@ -12,7 +11,7 @@ public class TrapezeEquation : ScriptableObject, TrapezeEquationInterface
         if (!(intersectionPoints[0] <= input || input <= intersectionPoints[intersectionPoints.Length - 1]))
             return -1;
 
-        for (int i = 0; i < intersectionPoints.Length; i++)
+        for (int i = 0; i < intersectionPoints.Length - 1; i++)
         {
             if (i % 2 != 0 && (intersectionPoints[i] < input && input < intersectionPoints[i + 1]))
                 return equations[i].GetY(input);

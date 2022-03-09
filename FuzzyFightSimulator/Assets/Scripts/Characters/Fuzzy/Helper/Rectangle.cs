@@ -15,7 +15,7 @@ public class Rectangle
         maximum = maximum_init;
     }
 
-    private double getD()
+    public double getD()
     {
         return (double)((start + end) / 2f);
     }

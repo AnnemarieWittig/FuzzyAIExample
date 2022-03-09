@@ -13,11 +13,13 @@ public class BattleSystem : MonoBehaviour
     [Header("Player")]
     [SerializeField] public GameObject playerPrefab;
     [SerializeField] public Transform playerPosition;
+    [SerializeField] public CharacterAI playerCharacterAI;
     private Character playerCharacter;
 
     [Header("Enemy")]
     [SerializeField] public GameObject enemyPrefab;
     [SerializeField] public Transform enemyPosition;
+    [SerializeField] public CharacterAI enemyCharacterAI;
     private Character enemyCharacter;
 
     [Header("UI")]
@@ -30,7 +32,6 @@ public class BattleSystem : MonoBehaviour
     void Start()
     {
         state = BattleState.START;
-        actions = GetComponent<CharacterActions>();
         InitializeVariables();
         StartCoroutine(InitializeFight());
     }
@@ -65,11 +66,24 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator EnemyTurn()
     {
+        if (state != BattleState.ENEMYTURN)
+            Debug.Log("Error");
         enemyCharacter.StopDefense();
         yield return StartCoroutine(dialogueUI.RunDialogue(enemyCharacter.generalChoice));
-        if (true)
+        BattleChoices choice = enemyCharacterAI.makeBattleDecision();
+        switch (choice)
         {
-            StartCoroutine(EnemyAttack());
+            case BattleChoices.ESCAPE:
+                StartCoroutine(CharacterFlees());
+                break;
+
+            case BattleChoices.BLOCK:
+                StartCoroutine(EnemyDefense());
+                break;
+
+            case BattleChoices.ATTACK:
+                StartCoroutine(EnemyAttack());
+                break;
         }
     }
 
@@ -134,11 +148,14 @@ public class BattleSystem : MonoBehaviour
 
     private void InitializeVariables()
     {
+        actions = GetComponent<CharacterActions>();
         GameObject playerGO = Instantiate(playerPrefab, playerPosition);
         playerCharacter = playerGO.GetComponent<Character>();
+        playerCharacterAI.aiCharacter = playerCharacter;
 
         GameObject enemyGO = Instantiate(enemyPrefab, enemyPosition);
         enemyCharacter = enemyGO.GetComponent<Character>();
+        enemyCharacterAI.aiCharacter = enemyCharacter;
     }
 
     private IEnumerator InitializeFight()

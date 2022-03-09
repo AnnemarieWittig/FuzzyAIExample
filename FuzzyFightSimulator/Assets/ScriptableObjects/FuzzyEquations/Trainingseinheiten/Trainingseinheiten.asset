@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db652343628e6844491ef81f452c734f, type: 3}
+  m_Name: Trainingseinheiten
+  m_EditorClassIdentifier: 
+  label: Trainingseinheiten
+  inputTrapezeEquations:
+  - {fileID: 11400000, guid: f7133834b0b16bf4bb800f2cc50999f2, type: 2}
+  - {fileID: 11400000, guid: 2a672d6cba0fa4a4582f85bb470c044e, type: 2}
+  - {fileID: 11400000, guid: a5db9a40fe787c04785b4c1db5e0074e, type: 2}
