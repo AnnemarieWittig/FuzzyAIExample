@@ -28,6 +28,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] public CharacterDescription enemyWindow;
     [SerializeField] public DialogueUI dialogueUI;
     private CharacterActions actions;
+    private ButtonFunctionality buttonActions;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class BattleSystem : MonoBehaviour
     {
         playerCharacter.StopDefense();
         yield return StartCoroutine(dialogueUI.RunDialogue(playerCharacter.generalChoice));
+        buttonActions.activateFightButtons();
     }
 
     public IEnumerator PlayerAttack()
@@ -149,6 +151,7 @@ public class BattleSystem : MonoBehaviour
     private void InitializeVariables()
     {
         actions = GetComponent<CharacterActions>();
+        buttonActions = GetComponent<ButtonFunctionality>();
         GameObject playerGO = Instantiate(playerPrefab, playerPosition);
         playerCharacter = playerGO.GetComponent<Character>();
         playerCharacterAI.aiCharacter = playerCharacter;

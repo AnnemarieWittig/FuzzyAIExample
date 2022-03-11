@@ -961,7 +961,7 @@ GameObject:
   - component: {fileID: 559182594}
   - component: {fileID: 559182593}
   m_Layer: 5
-  m_Name: FleeButton
+  m_Name: EscapeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1034,6 +1034,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1274246250}
         m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
         m_MethodName: OnFleeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1274246250}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: deactivateFightButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2065,6 +2077,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleSystem: {fileID: 1274246248}
+  fightButtons:
+  - {fileID: 1841634475}
+  - {fileID: 1441392998}
+  - {fileID: 559182593}
 --- !u!114 &1274246251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2263,7 +2279,7 @@ GameObject:
   - component: {fileID: 1441392999}
   - component: {fileID: 1441392998}
   m_Layer: 5
-  m_Name: HealButton
+  m_Name: BlockButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2336,6 +2352,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1274246250}
         m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
         m_MethodName: OnDefenseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1274246250}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: deactivateFightButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3021,6 +3049,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1274246250}
         m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
         m_MethodName: OnAttackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1274246250}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: deactivateFightButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

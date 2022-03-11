@@ -7,6 +7,7 @@ using TMPro;
 public class ButtonFunctionality : MonoBehaviour
 {
     [SerializeField] BattleSystem battleSystem;
+    [SerializeField] Button[] fightButtons;
 
     public void OnAttackButton()
     {
@@ -44,6 +45,22 @@ public class ButtonFunctionality : MonoBehaviour
         else
         {
             StartCoroutine(battleSystem.CharacterFlees());
+        }
+    }
+
+    public void deactivateFightButtons()
+    {
+        foreach (var button in fightButtons)
+        {
+            button.interactable = false;
+        }
+    }
+
+    public void activateFightButtons()
+    {
+        foreach (var button in fightButtons)
+        {
+            button.interactable = true;
         }
     }
 

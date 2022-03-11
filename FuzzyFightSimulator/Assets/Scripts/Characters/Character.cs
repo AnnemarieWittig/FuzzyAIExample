@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     [SerializeField] public DialogueObject winMessage;
     [SerializeField] public DialogueObject attackAgainstDefender;
     [SerializeField] public DialogueObject attackAgainstOpen;
+    [SerializeField] public DialogueObject attackMiss;
     [SerializeField] public DialogueObject generalChoice;
     [SerializeField] public DialogueObject attackChoice;
     [SerializeField] public DialogueObject defenseChoice;

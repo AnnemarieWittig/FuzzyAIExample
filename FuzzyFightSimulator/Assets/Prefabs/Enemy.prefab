@@ -46,13 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Enemy Character
   level: 2
-  maxHP: 30
-  currentHP: 30
-  damage: 10
-  hitChance: 0
+  trainingHours: 100
+  maxHP: 100
+  currentHP: 100
+  damage: 5
+  hitChance: 100
   winMessage: {fileID: 11400000, guid: 21923fb1ceb8a2149a2a573b212d921d, type: 2}
   attackAgainstDefender: {fileID: 11400000, guid: 7b5dd78df1788b94cbef54d862515700, type: 2}
   attackAgainstOpen: {fileID: 11400000, guid: 449a8177533c5e34a80a623c8cfb3ba8, type: 2}
+  attackMiss: {fileID: 11400000, guid: ed5491f2a801d9d429fd076b9dbc1927, type: 2}
   generalChoice: {fileID: 11400000, guid: 50770e27b4323b94990099ab18b4261b, type: 2}
   attackChoice: {fileID: 11400000, guid: 461c1505eead3034d816fa2270867cdd, type: 2}
   defenseChoice: {fileID: 11400000, guid: 67ba00847653786409f3e73777630cdc, type: 2}
