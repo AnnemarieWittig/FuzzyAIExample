@@ -27,14 +27,28 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] public CharacterDescription playerWindow;
     [SerializeField] public CharacterDescription enemyWindow;
     [SerializeField] public DialogueUI dialogueUI;
+    [SerializeField] public BattleButtonFunctionality buttonActions;
+    [SerializeField] public Menu menu;
     private CharacterActions actions;
-    private ButtonFunctionality buttonActions;
 
     void Start()
+    {
+        buttonActions.deactivateFightButtons();
+        initializeGame();
+        menu.Pause();
+    }
+
+    private void initializeGame()
     {
         state = BattleState.START;
         InitializeVariables();
         StartCoroutine(InitializeFight());
+    }
+
+    private void removeCharacters()
+    {
+        Destroy(playerCharacter);
+        Destroy(enemyCharacter);
     }
 
     private IEnumerator PlayerTurn()
@@ -151,7 +165,6 @@ public class BattleSystem : MonoBehaviour
     private void InitializeVariables()
     {
         actions = GetComponent<CharacterActions>();
-        buttonActions = GetComponent<ButtonFunctionality>();
         GameObject playerGO = Instantiate(playerPrefab, playerPosition);
         playerCharacter = playerGO.GetComponent<Character>();
         playerCharacterAI.aiCharacter = playerCharacter;

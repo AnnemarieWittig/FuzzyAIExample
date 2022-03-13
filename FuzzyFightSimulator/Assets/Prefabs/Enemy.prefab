@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7287920399387033737}
   - component: {fileID: 9100516301756917927}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8507148962404283102}
   - component: {fileID: 8980905766871084496}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dwayne
   m_TagString: Untagged
   m_Icon: {fileID: 0}

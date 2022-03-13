@@ -23,16 +23,32 @@ public class DialogueUI : MonoBehaviour
 
     public IEnumerator RunDialogue(DialogueObject dialogueObject)
     {
+        while (Menu.GameIsPaused)
+        {
+            yield return 0;
+        }
         for (int i = 0; i < dialogueObject.Dialogue.Length; i++)
         {
             string dialogueText = dialogueObject.Dialogue[i];
             Debug.Log(dialogueText);
             yield return typewriter.Run(dialogueText, dialogueUI);
             //if (i != (dialogueObject.Dialogue.Length - 1))
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+            activateHint();
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Mouse0));
+            deactivteHint();
             yield return 0;
         }
         //closeDialogueBox();
+    }
+
+    private void activateHint()
+    {
+        //TODO
+    }
+
+    private void deactivteHint()
+    {
+        //TODO
     }
 
     private void closeDialogueBox()

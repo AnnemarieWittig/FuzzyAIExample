@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ButtonFunctionality : MonoBehaviour
+public class BattleButtonFunctionality : MonoBehaviour
 {
     [SerializeField] BattleSystem battleSystem;
     [SerializeField] Button[] fightButtons;
 
     public void OnAttackButton()
     {
+        Debug.Log("Button Pressed");
         BattleState state = battleSystem.GetBattleState();
         if (state != BattleState.PLAYERTURN)
         {
