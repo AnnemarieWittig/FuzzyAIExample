@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, END }
 
@@ -22,26 +19,30 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] public CharacterAI enemyCharacterAI;
     private Character enemyCharacter;
 
-    [Header("UI")]
+    [Header("Battle UI")]
     [SerializeField] public DialogueObject initialDialogue;
-    [SerializeField] public CharacterDescription playerWindow;
-    [SerializeField] public CharacterDescription enemyWindow;
-    [SerializeField] public DialogueUI dialogueUI;
-    [SerializeField] public BattleButtonFunctionality buttonActions;
-    [SerializeField] public Menu menu;
+    [SerializeField] public CharacterDescription PlayerWindow;
+    [SerializeField] public CharacterDescription EnemyWindow;
+    [SerializeField] public DialogueUI Dialogue;
+    [SerializeField] public BattleButtonFunctionality ButtonActions;
+    
+    [Header("Pause Menu UI")]
+    [SerializeField] public PausePlaySwitcher PausePlay;
+    [SerializeField] public MainMenuFunctionality MainMenu;
     private CharacterActions actions;
 
     void Start()
     {
-        buttonActions.deactivateFightButtons();
+        ButtonActions.deactivateFightButtons();
         initializeGame();
-        menu.Pause();
+        PausePlay.Pause();
     }
 
     private void initializeGame()
     {
         state = BattleState.START;
         InitializeVariables();
+        InitializeMenus();
         StartCoroutine(InitializeFight());
     }
 
@@ -54,19 +55,19 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator PlayerTurn()
     {
         playerCharacter.StopDefense();
-        yield return StartCoroutine(dialogueUI.RunDialogue(playerCharacter.generalChoice));
-        buttonActions.activateFightButtons();
+        yield return StartCoroutine(Dialogue.RunDialogue(playerCharacter.generalChoice));
+        ButtonActions.activateFightButtons();
     }
 
     public IEnumerator PlayerAttack()
     {
-        yield return StartCoroutine(actions.InitiateAttack(playerCharacter, enemyCharacter, enemyWindow, dialogueUI));
+        yield return StartCoroutine(actions.InitiateAttack(playerCharacter, enemyCharacter, EnemyWindow, Dialogue));
         moveToEnemyTurn();
     }
 
     public IEnumerator PlayerDefense()
     {
-        yield return StartCoroutine(actions.InitiateDefense(playerCharacter, dialogueUI));
+        yield return StartCoroutine(actions.InitiateDefense(playerCharacter, Dialogue));
         moveToEnemyTurn();
     }
 
@@ -85,7 +86,7 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.ENEMYTURN)
             Debug.Log("Error");
         enemyCharacter.StopDefense();
-        yield return StartCoroutine(dialogueUI.RunDialogue(enemyCharacter.generalChoice));
+        yield return StartCoroutine(Dialogue.RunDialogue(enemyCharacter.generalChoice));
         BattleChoices choice = enemyCharacterAI.makeBattleDecision();
         switch (choice)
         {
@@ -105,13 +106,13 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator EnemyAttack()
     {
-        yield return StartCoroutine(actions.InitiateAttack(enemyCharacter, playerCharacter, playerWindow, dialogueUI));
+        yield return StartCoroutine(actions.InitiateAttack(enemyCharacter, playerCharacter, PlayerWindow, Dialogue));
         moveToPlayerTurn();
     }
 
     private IEnumerator EnemyDefense()
     {
-        yield return StartCoroutine(actions.InitiateDefense(enemyCharacter, dialogueUI));
+        yield return StartCoroutine(actions.InitiateDefense(enemyCharacter, Dialogue));
         moveToPlayerTurn();
     }
 
@@ -146,12 +147,12 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.PLAYERTURN)
         {
-            yield return StartCoroutine(dialogueUI.RunDialogue(playerCharacter.flightChoice));
+            yield return StartCoroutine(Dialogue.RunDialogue(playerCharacter.flightChoice));
             StartCoroutine(EndBattle(enemyCharacter.winMessage));
         }
         else if (state == BattleState.ENEMYTURN)
         {
-            yield return StartCoroutine(dialogueUI.RunDialogue(enemyCharacter.flightChoice));
+            yield return StartCoroutine(Dialogue.RunDialogue(enemyCharacter.flightChoice));
             StartCoroutine(EndBattle(playerCharacter.winMessage));
         }
     }
@@ -159,7 +160,7 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator EndBattle(DialogueObject dialogueObject)
     {
         state = BattleState.END;
-        yield return StartCoroutine(dialogueUI.RunDialogue(dialogueObject));
+        yield return StartCoroutine(Dialogue.RunDialogue(dialogueObject));
     }
 
     private void InitializeVariables()
@@ -174,12 +175,16 @@ public class BattleSystem : MonoBehaviour
         enemyCharacterAI.aiCharacter = enemyCharacter;
     }
 
+    private void InitializeMenus() {
+        MainMenu.SetCharacterInMenus(playerCharacter, enemyCharacter);
+    }
+
     private IEnumerator InitializeFight()
     {
-        playerWindow.Initialize(playerCharacter);
-        enemyWindow.Initialize(enemyCharacter);
+        PlayerWindow.Initialize(playerCharacter);
+        EnemyWindow.Initialize(enemyCharacter);
 
-        yield return StartCoroutine(dialogueUI.RunDialogue(initialDialogue));
+        yield return StartCoroutine(Dialogue.RunDialogue(initialDialogue));
         state = BattleState.PLAYERTURN;
         StartCoroutine(PlayerTurn());
     }
@@ -187,7 +192,7 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator playDialogueUi(DialogueObject dialogueObject)
     {
         Debug.Log("playDialogueUi");
-        dialogueUI.showDialogue(dialogueObject);
+        Dialogue.showDialogue(dialogueObject);
         yield return 0;
     }
 

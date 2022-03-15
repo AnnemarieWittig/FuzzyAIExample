@@ -23,7 +23,7 @@ public class DialogueUI : MonoBehaviour
 
     public IEnumerator RunDialogue(DialogueObject dialogueObject)
     {
-        while (Menu.GameIsPaused)
+        while (PausePlaySwitcher.GameIsPaused)
         {
             yield return 0;
         }

@@ -9,17 +9,16 @@ public class Character : MonoBehaviour
 {
     [Header("General Information")]
     [SerializeField] public string characterName;
-    [SerializeField] public int level;
     [SerializeField] public double trainingHours;
     private DefenseState defenseState;
 
     [Header("Life Points")]
     [SerializeField] public int maxHP;
-    [SerializeField] public int currentHP;
+    [SerializeField] public float currentHP;
     private bool isDead;
 
     [Header("Attack Information")]
-    [SerializeField] public int damage;
+    [SerializeField] public float damage;
     [SerializeField] public float hitChance;
 
     [Header("Messages")]
@@ -47,10 +46,10 @@ public class Character : MonoBehaviour
         enemyInfo.SetHP(enemy.currentHP);
     }
 
-    private void TakeDamage(int damage)
+    private void TakeDamage(float damage)
     {
         if (defenseState == DefenseState.DEFENDING)
-            damage = (damage / 2);
+            damage = (float)(damage / 2);
 
         currentHP -= damage;
 

@@ -13,12 +13,11 @@ public class CharacterDescription : MonoBehaviour
     public void Initialize(Character character)
     {
         nameText.text = character.characterName;
-        levelText.text = "Lvl " + character.level;
         hpSlider.maxValue = character.maxHP;
         hpSlider.value = character.currentHP;
     }
 
-    public void SetHP(int hp)
+    public void SetHP(float hp)
     {
         hpSlider.value = hp;
     }
