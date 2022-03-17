@@ -25,7 +25,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] public CharacterDescription EnemyWindow;
     [SerializeField] public DialogueUI Dialogue;
     [SerializeField] public BattleButtonFunctionality ButtonActions;
-    
+
     [Header("Pause Menu UI")]
     [SerializeField] public PausePlaySwitcher PausePlay;
     [SerializeField] public MainMenuFunctionality MainMenu;
@@ -67,7 +67,7 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator PlayerDefense()
     {
-        yield return StartCoroutine(actions.InitiateDefense(playerCharacter, Dialogue));
+        yield return StartCoroutine(actions.InitiateDefense(playerCharacter, Dialogue, PlayerWindow));
         moveToEnemyTurn();
     }
 
@@ -112,7 +112,7 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator EnemyDefense()
     {
-        yield return StartCoroutine(actions.InitiateDefense(enemyCharacter, Dialogue));
+        yield return StartCoroutine(actions.InitiateDefense(enemyCharacter, Dialogue, EnemyWindow));
         moveToPlayerTurn();
     }
 
@@ -131,12 +131,12 @@ public class BattleSystem : MonoBehaviour
     {
         if (playerCharacter.GetIsDead())
         {
-            StartCoroutine(EndBattle(enemyCharacter.winMessage));
+            StartCoroutine(EndBattle(enemyCharacter.WinMessage, enemyCharacter.WinScreenMessage));
             return true;
         }
         else if (enemyCharacter.GetIsDead())
         {
-            StartCoroutine(EndBattle(playerCharacter.winMessage));
+            StartCoroutine(EndBattle(playerCharacter.WinMessage, playerCharacter.WinScreenMessage));
             return true;
         }
         else { return false; }
@@ -148,19 +148,20 @@ public class BattleSystem : MonoBehaviour
         if (state == BattleState.PLAYERTURN)
         {
             yield return StartCoroutine(Dialogue.RunDialogue(playerCharacter.flightChoice));
-            StartCoroutine(EndBattle(enemyCharacter.winMessage));
+            StartCoroutine(EndBattle(enemyCharacter.WinMessage, enemyCharacter.WinScreenMessage));
         }
         else if (state == BattleState.ENEMYTURN)
         {
             yield return StartCoroutine(Dialogue.RunDialogue(enemyCharacter.flightChoice));
-            StartCoroutine(EndBattle(playerCharacter.winMessage));
+            StartCoroutine(EndBattle(playerCharacter.WinMessage, playerCharacter.WinScreenMessage));
         }
     }
 
-    private IEnumerator EndBattle(DialogueObject dialogueObject)
+    private IEnumerator EndBattle(DialogueObject winText, DialogueObject endScreenText)
     {
         state = BattleState.END;
-        yield return StartCoroutine(Dialogue.RunDialogue(dialogueObject));
+        yield return StartCoroutine(Dialogue.RunDialogue(winText));
+        PausePlay.EndGame(endScreenText, MainMenu);
     }
 
     private void InitializeVariables()
@@ -175,8 +176,9 @@ public class BattleSystem : MonoBehaviour
         enemyCharacterAI.aiCharacter = enemyCharacter;
     }
 
-    private void InitializeMenus() {
-        MainMenu.SetCharacterInMenus(playerCharacter, enemyCharacter);
+    private void InitializeMenus()
+    {
+        MainMenu.SetCharacterInMenus(playerCharacter, enemyCharacter, PlayerWindow, EnemyWindow);
     }
 
     private IEnumerator InitializeFight()

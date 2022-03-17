@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7287920399387033737}
   - component: {fileID: 9100516301756917927}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,20 +45,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Enemy Character
-  level: 2
   trainingHours: 100
   maxHP: 100
   currentHP: 100
-  damage: 5
-  hitChance: 100
-  winMessage: {fileID: 11400000, guid: 21923fb1ceb8a2149a2a573b212d921d, type: 2}
-  attackAgainstDefender: {fileID: 11400000, guid: 7b5dd78df1788b94cbef54d862515700, type: 2}
-  attackAgainstOpen: {fileID: 11400000, guid: 449a8177533c5e34a80a623c8cfb3ba8, type: 2}
-  attackMiss: {fileID: 11400000, guid: ed5491f2a801d9d429fd076b9dbc1927, type: 2}
+  damage: 25
+  hitChance: 80
+  CritAllowance: 1
+  HealAllowance: 1
+  CritChance: 25
+  HealChance: 75
+  HealValue: 20
   generalChoice: {fileID: 11400000, guid: 50770e27b4323b94990099ab18b4261b, type: 2}
   attackChoice: {fileID: 11400000, guid: 461c1505eead3034d816fa2270867cdd, type: 2}
   defenseChoice: {fileID: 11400000, guid: 67ba00847653786409f3e73777630cdc, type: 2}
   flightChoice: {fileID: 11400000, guid: a595ebd62fe86f84299cc246613ce6b0, type: 2}
+  attackAgainstDefender: {fileID: 11400000, guid: 7b5dd78df1788b94cbef54d862515700, type: 2}
+  attackAgainstOpen: {fileID: 11400000, guid: 449a8177533c5e34a80a623c8cfb3ba8, type: 2}
+  attackMiss: {fileID: 11400000, guid: ed5491f2a801d9d429fd076b9dbc1927, type: 2}
+  CriticalAttack: {fileID: 11400000, guid: dcb145736b2a1714cb3dfae49ef75167, type: 2}
+  SelfHealed: {fileID: 11400000, guid: 247105ef8660c374183d43ce2dc76649, type: 2}
+  WinMessage: {fileID: 11400000, guid: 21923fb1ceb8a2149a2a573b212d921d, type: 2}
+  WinScreenMessage: {fileID: 11400000, guid: 725b1568fe4d009429253120bdaa07ae, type: 2}
   animator: {fileID: 0}
 --- !u!1 &7215157538837002824
 GameObject:
@@ -70,7 +77,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8507148962404283102}
   - component: {fileID: 8980905766871084496}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Dwayne
   m_TagString: Untagged
   m_Icon: {fileID: 0}

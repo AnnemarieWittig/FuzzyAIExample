@@ -8,9 +8,11 @@ public class CharacterActions : MonoBehaviour
     {
         yield return StartCoroutine(dialogueUI.RunDialogue(attacker.attackChoice));
 
-        if (succesfullHit(attacker))
+        if (Character.CalculateSuccessOfAction(attacker.hitChance))
         {
-            attacker.Attack(defender, defenderWindow);
+            bool crit = attacker.Attack(defender, defenderWindow);
+            if (crit)
+                yield return StartCoroutine(dialogueUI.RunDialogue(attacker.CriticalAttack));
 
             if (defender.GetDefenseState() == DefenseState.DEFENDING)
                 yield return StartCoroutine(dialogueUI.RunDialogue(defender.attackAgainstDefender));
@@ -24,18 +26,12 @@ public class CharacterActions : MonoBehaviour
         yield return defender.GetIsDead();
     }
 
-    public IEnumerator InitiateDefense(Character character, DialogueUI dialogueUI)
+    public IEnumerator InitiateDefense(Character character, DialogueUI dialogueUI, CharacterDescription characterWindow)
     {
         yield return StartCoroutine(dialogueUI.RunDialogue(character.defenseChoice));
-        character.StartDefense();
+        bool healed = character.StartDefense(characterWindow);
+        if (healed)
+            yield return StartCoroutine(dialogueUI.RunDialogue(character.SelfHealed));
     }
 
-    private bool succesfullHit(Character attacker)
-    {
-        float hit = Random.Range(0f, 100 * 100f);
-        if (attacker.hitChance > 0 && 0 <= hit && hit <= attacker.hitChance * 100f)
-            return true;
-        else
-            return false;
-    }
 }
