@@ -53,7 +53,7 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator PlayerTurn()
     {
         if (state != BattleState.PLAYERTURN)
-            Debug.Log("Error");
+            throw new NotCharacterTurnException("It's not the player's turn.");
         playerCharacter.StopDefense();
         yield return StartCoroutine(DialoguePlayer.RunDialogue(playerCharacter.GeneralChoice));
         if (PlayerAutomaticToggle.isOn == false)
@@ -104,7 +104,7 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator EnemyTurn()
     {
         if (state != BattleState.ENEMYTURN)
-            Debug.Log("Error");
+            throw new NotCharacterTurnException("It's not the enemy's turn.");
         enemyCharacter.StopDefense();
         yield return StartCoroutine(DialoguePlayer.RunDialogue(enemyCharacter.GeneralChoice));
         BattleChoices choice = enemyCharacterAI.MakeBattleDecision();
@@ -209,13 +209,6 @@ public class BattleSystem : MonoBehaviour
         yield return StartCoroutine(DialoguePlayer.RunDialogue(initialDialogue));
         state = BattleState.PLAYERTURN;
         StartCoroutine(PlayerTurn());
-    }
-
-    private IEnumerator playDialogueUi(DialogueObject dialogueObject)
-    {
-        Debug.Log("playDialogueUi");
-        DialoguePlayer.showDialogue(dialogueObject);
-        yield return 0;
     }
 
     public BattleState GetBattleState()

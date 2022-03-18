@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +15,8 @@ public class OutputTrapezeEquation : TrapezeEquation
         else if (equationsToCut.Count == 2)
             return GenerateRectangleWithTwoIntersections(horizontalLine, equationsToCut[0], equationsToCut[1]);
         else
-            return new Rectangle(-1, -1, -1); //ERROR
+            throw new TooManyIntersectionsDetected("With the current implementation, a rectangle can only be created between two intersections. However, we detected "
+            + equationsToCut.Count + " equations that would intersect with the given one.");
     }
 
     private Rectangle GenerateRectangleWithOneIntersection(LinearEquation horizontalLine, LinearEquation FirstLineToCut, double min, double max)

@@ -37,7 +37,7 @@ public class OutputLinguisticVariable : LinguisticVariable
         {
             BattleChoices choice = equation.getCorrespongingBattleChoice();
             if (counter.Contains(choice))
-                return; //ERROR
+                throw new LinguisticValueCannotHaveMultipleEquations("There are multiple equations for " + choice);
             else
                 counter.Add(choice);
         }

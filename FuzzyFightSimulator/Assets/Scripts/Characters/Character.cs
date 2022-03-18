@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using TMPro;
 
 public enum DefenseState { DEFENDING, OPEN }
 
