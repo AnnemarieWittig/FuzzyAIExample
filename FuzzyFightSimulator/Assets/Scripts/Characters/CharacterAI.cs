@@ -4,39 +4,39 @@ using UnityEngine;
 
 public class CharacterAI : MonoBehaviour
 {
-    [SerializeField] public Character aiCharacter;
-    [SerializeField] public InputLinguisticVariable trefferchance;
-    [SerializeField] public InputLinguisticVariable lebenspunkte;
-    [SerializeField] public InputLinguisticVariable schaden;
-    [SerializeField] public InputLinguisticVariable trainingseinheiten;
-    [SerializeField] public OutputLinguisticVariable kampfentscheidung;
+    [SerializeField] public Character AiCharacter;
+    [SerializeField] public InputLinguisticVariable Trefferchance;
+    [SerializeField] public InputLinguisticVariable Lebenspunkte;
+    [SerializeField] public InputLinguisticVariable Schaden;
+    [SerializeField] public InputLinguisticVariable Trainingseinheiten;
+    [SerializeField] public OutputLinguisticVariable Kampfentscheidung;
 
-    public BattleChoices makeBattleDecision()
+    public BattleChoices MakeBattleDecision()
     {
-        Dictionary<BattleChoices, double> resultOfRuleEvaluation = ruleEvaluation();
-        double defuzziedValue = getDefuzziedValue(resultOfRuleEvaluation);
-        BattleChoices translatedAction = translateDefuzziedValueToAction(defuzziedValue);
+        Dictionary<BattleChoices, double> resultOfRuleEvaluation = RuleEvaluation();
+        double defuzziedValue = GetDefuzziedValue(resultOfRuleEvaluation);
+        BattleChoices translatedAction = TranslateDefuzziedValueToAction(defuzziedValue);
         return translatedAction;
     }
 
-    private Dictionary<BattleChoices, double> ruleEvaluation()
+    private Dictionary<BattleChoices, double> RuleEvaluation()
     {
-        Dictionary<BattleChoices, double> valuesOfRuleEvaluation = generateBasicDictionary();
-        valuesOfRuleEvaluation = trefferchance.GetHighestMembershipForRuleEvaluation(aiCharacter.hitChance, valuesOfRuleEvaluation);
-        valuesOfRuleEvaluation = lebenspunkte.GetHighestMembershipForRuleEvaluation(aiCharacter.currentHP, valuesOfRuleEvaluation);
-        valuesOfRuleEvaluation = schaden.GetHighestMembershipForRuleEvaluation(aiCharacter.damage, valuesOfRuleEvaluation);
-        valuesOfRuleEvaluation = trainingseinheiten.GetHighestMembershipForRuleEvaluation(aiCharacter.trainingHours, valuesOfRuleEvaluation);
+        Dictionary<BattleChoices, double> valuesOfRuleEvaluation = GenerateBasicDictionary();
+        valuesOfRuleEvaluation = Trefferchance.GetHighestMembershipForRuleEvaluation(AiCharacter.HitChance, valuesOfRuleEvaluation);
+        valuesOfRuleEvaluation = Lebenspunkte.GetHighestMembershipForRuleEvaluation(AiCharacter.CurrentHP, valuesOfRuleEvaluation);
+        valuesOfRuleEvaluation = Schaden.GetHighestMembershipForRuleEvaluation(AiCharacter.Damage, valuesOfRuleEvaluation);
+        valuesOfRuleEvaluation = Trainingseinheiten.GetHighestMembershipForRuleEvaluation(AiCharacter.TrainingHours, valuesOfRuleEvaluation);
         return valuesOfRuleEvaluation;
     }
 
-    private double getDefuzziedValue(Dictionary<BattleChoices, double> valuesAfterEvaluation)
+    private double GetDefuzziedValue(Dictionary<BattleChoices, double> valuesAfterEvaluation)
     {
-        List<Rectangle> generatedRectangles = kampfentscheidung.calculateDefuzzyfication(valuesAfterEvaluation);
-        double defuzziedValue = aom(generatedRectangles);
+        List<Rectangle> generatedRectangles = Kampfentscheidung.calculateDefuzzyfication(valuesAfterEvaluation);
+        double defuzziedValue = Aom(generatedRectangles);
         return defuzziedValue;
     }
 
-    private BattleChoices translateDefuzziedValueToAction(double defuzziedValue)
+    private BattleChoices TranslateDefuzziedValueToAction(double defuzziedValue)
     {
         if (0 <= defuzziedValue && defuzziedValue <= 33)
             return BattleChoices.ESCAPE;
@@ -47,7 +47,7 @@ public class CharacterAI : MonoBehaviour
         else
             return BattleChoices.ESCAPE; //Error
     }
-    private double aom(List<Rectangle> rectangles)
+    private double Aom(List<Rectangle> rectangles)
     {
         double numerator = 0d;
         double denominator = 0d;
@@ -59,7 +59,7 @@ public class CharacterAI : MonoBehaviour
         return (double)numerator / denominator;
     }
 
-    private Dictionary<BattleChoices, double> generateBasicDictionary()
+    private Dictionary<BattleChoices, double> GenerateBasicDictionary()
     {
         Dictionary<BattleChoices, double> dict = new Dictionary<BattleChoices, double>();
         dict.Add(BattleChoices.ESCAPE, 0.0);
@@ -70,10 +70,10 @@ public class CharacterAI : MonoBehaviour
 
     /*
     Testcase
-        aiCharacter.hitChance = 70;
-        aiCharacter.currentHP = 75;
-        aiCharacter.trainingHours = 35;
-        aiCharacter.damage = 30;
+        AiCharacter.HitChance = 70;
+        AiCharacter.CurrentHP = 75;
+        AiCharacter.TrainingHours = 35;
+        AiCharacter.Damage = 30;
         Debug.Log("Expected: ");
         Debug.Log("Escape: " + 6d / 13d);
         Debug.Log("Block: " + 7d / 13d);
@@ -85,6 +85,6 @@ public class CharacterAI : MonoBehaviour
 
         Debug.Log("Generated: ");
 
-        Debug.Log(makeBattleDecision());
+        Debug.Log(MakeBattleDecision());
     */
 }

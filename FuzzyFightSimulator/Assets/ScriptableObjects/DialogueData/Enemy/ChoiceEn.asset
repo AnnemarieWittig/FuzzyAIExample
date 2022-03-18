@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05083533075f794bb8ff8ace68aa8ce, type: 3}
   m_Name: ChoiceEn
   m_EditorClassIdentifier: 
-  dialogue:
-  - The Enemy chooses an Action.
+  _dialogue:
+  - "Der Gegner entscheidet sich f\xFCr eine Aktion..."

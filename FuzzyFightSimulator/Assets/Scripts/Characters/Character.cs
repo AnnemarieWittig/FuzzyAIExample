@@ -8,18 +8,18 @@ public enum DefenseState { DEFENDING, OPEN }
 public class Character : MonoBehaviour
 {
     [Header("General Information")]
-    [SerializeField] public string characterName;
-    [SerializeField] public double trainingHours;
-    private DefenseState defenseState;
+    [SerializeField] public string CharacterName;
+    [SerializeField] public double TrainingHours;
+    private DefenseState _defenseState;
 
     [Header("Life Points")]
-    [SerializeField] public int maxHP;
-    [SerializeField] public float currentHP;
+    [SerializeField] public int MaxHP;
+    [SerializeField] public float CurrentHP;
     private bool isDead;
 
     [Header("Attack Information")]
-    [SerializeField] public float damage;
-    [SerializeField] public float hitChance;
+    [SerializeField] public float Damage;
+    [SerializeField] public float HitChance;
 
     [Header("Random Events")]
     [SerializeField] public bool CritAllowance = false;
@@ -29,15 +29,15 @@ public class Character : MonoBehaviour
     [SerializeField] public float HealValue;
 
     [Header("Messages - Choices")]
-    [SerializeField] public DialogueObject generalChoice;
-    [SerializeField] public DialogueObject attackChoice;
-    [SerializeField] public DialogueObject defenseChoice;
-    [SerializeField] public DialogueObject flightChoice;
+    [SerializeField] public DialogueObject GeneralChoice;
+    [SerializeField] public DialogueObject AttackChoice;
+    [SerializeField] public DialogueObject DefenseChoice;
+    [SerializeField] public DialogueObject EscapeChoice;
 
     [Header("Messages - Attack")]
-    [SerializeField] public DialogueObject attackAgainstDefender;
-    [SerializeField] public DialogueObject attackAgainstOpen;
-    [SerializeField] public DialogueObject attackMiss;
+    [SerializeField] public DialogueObject AttackAgainstDefender;
+    [SerializeField] public DialogueObject AttackAgainstOpen;
+    [SerializeField] public DialogueObject AttackMiss;
 
     [Header("Messages - Random Events")]
     [SerializeField] public DialogueObject CriticalAttack;
@@ -48,17 +48,17 @@ public class Character : MonoBehaviour
     [SerializeField] public DialogueObject WinScreenMessage;
 
     [Header("Organisational")]
-    [SerializeField] public Animator animator;
+    [SerializeField] public Animator Animator;
 
 
     private void Start()
     {
-        defenseState = DefenseState.OPEN;
+        _defenseState = DefenseState.OPEN;
     }
 
     public bool Attack(Character enemy, CharacterDescription enemyInfo)
     {
-        float damageToApply = damage;
+        float damageToApply = Damage;
         bool crit = false;
         if (CritAllowance && CalculateSuccessOfAction(CritChance))
         {
@@ -66,18 +66,18 @@ public class Character : MonoBehaviour
             crit = true;
         }
         enemy.TakeDamage(damageToApply);
-        enemyInfo.SetHP(enemy.currentHP);
+        enemyInfo.SetHP(enemy.CurrentHP);
         return crit;
     }
 
-    private void TakeDamage(float damage)
+    private void TakeDamage(float Damage)
     {
-        if (defenseState == DefenseState.DEFENDING)
-            damage = (float)(damage / 2);
+        if (_defenseState == DefenseState.DEFENDING)
+            Damage = (float)(Damage / 2);
 
-        currentHP -= damage;
+        CurrentHP -= Damage;
 
-        if (currentHP <= 0)
+        if (CurrentHP <= 0)
             isDead = true;
         else
             isDead = false;
@@ -85,13 +85,13 @@ public class Character : MonoBehaviour
 
     public bool StartDefense(CharacterDescription myWindow)
     {
-        defenseState = DefenseState.DEFENDING;
+        _defenseState = DefenseState.DEFENDING;
         if (HealAllowance && CalculateSuccessOfAction(HealChance))
         {
-            currentHP += HealValue;
-            if (currentHP > maxHP)
-                currentHP = maxHP;
-            myWindow.SetHP(currentHP);
+            CurrentHP += HealValue;
+            if (CurrentHP > MaxHP)
+                CurrentHP = MaxHP;
+            myWindow.SetHP(CurrentHP);
             return true;
         }
 
@@ -101,7 +101,7 @@ public class Character : MonoBehaviour
 
     public void StopDefense()
     {
-        defenseState = DefenseState.OPEN;
+        _defenseState = DefenseState.OPEN;
         //animator.SetBool("defending", false);
     }
 
@@ -116,6 +116,6 @@ public class Character : MonoBehaviour
 
     public bool GetIsDead() { return isDead; }
     public void SetIsDead(bool dead) { isDead = dead; }
-    public DefenseState GetDefenseState() => defenseState;
+    public DefenseState GetDefenseState() => _defenseState;
 
 }

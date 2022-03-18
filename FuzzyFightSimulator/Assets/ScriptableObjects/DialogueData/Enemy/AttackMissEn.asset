@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05083533075f794bb8ff8ace68aa8ce, type: 3}
   m_Name: AttackMissEn
   m_EditorClassIdentifier: 
-  dialogue:
-  - 'The enemies Attack missed.
-
-    You do not receive damage.'
+  _dialogue:
+  - Der Angriff des Gegners verfehlt!
+  - "Du erh\xE4ltst keinen Schaden."

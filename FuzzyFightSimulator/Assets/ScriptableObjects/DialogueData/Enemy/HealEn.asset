@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05083533075f794bb8ff8ace68aa8ce, type: 3}
   m_Name: HealEn
   m_EditorClassIdentifier: 
-  dialogue:
-  - (Zufallsevent) Dein Gegner heilt sich selbst!
-  - Es wird Leben wiederhergestellt.
+  _dialogue:
+  - (Zufallsevent) Der Gegner heilt sich selbst!
+  - Sein Leben wird wieder hergestellt.

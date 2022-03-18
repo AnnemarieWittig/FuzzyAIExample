@@ -137,10 +137,10 @@ public class CharacterMenu : MonoBehaviour
 
     public void UpdateCharacterObject()
     {
-        Char.currentHP = HpSlider.value;
-        Char.damage = DamageSlider.value;
-        Char.hitChance = HitChanceSlider.value;
-        Char.trainingHours = TrainingSlider.value;
+        Char.CurrentHP = HpSlider.value;
+        Char.Damage = DamageSlider.value;
+        Char.HitChance = HitChanceSlider.value;
+        Char.TrainingHours = TrainingSlider.value;
         if (CritToggle.isOn)
         {
             Char.CritAllowance = true;
@@ -156,19 +156,19 @@ public class CharacterMenu : MonoBehaviour
         }
         else
             Char.HealAllowance = false;
-        CharWindow.SetHP(Char.currentHP);
+        CharWindow.SetHP(Char.CurrentHP);
     }
 
     public void OpenCharacterMenu()
     {
-        HpSlider.value = Char.currentHP;
-        HpText.text = Char.currentHP.ToString();
-        HitChanceSlider.value = Char.hitChance;
-        HitChanceText.text = Char.hitChance.ToString();
-        DamageSlider.value = Char.damage;
-        DamageText.text = Char.damage.ToString();
-        TrainingSlider.value = (float)Char.trainingHours;
-        TrainingText.text = Char.trainingHours.ToString();
+        HpSlider.value = Char.CurrentHP;
+        HpText.text = Char.CurrentHP.ToString();
+        HitChanceSlider.value = Char.HitChance;
+        HitChanceText.text = Char.HitChance.ToString();
+        DamageSlider.value = Char.Damage;
+        DamageText.text = Char.Damage.ToString();
+        TrainingSlider.value = (float)Char.TrainingHours;
+        TrainingText.text = Char.TrainingHours.ToString();
         AdjustRandomEvents();
     }
 

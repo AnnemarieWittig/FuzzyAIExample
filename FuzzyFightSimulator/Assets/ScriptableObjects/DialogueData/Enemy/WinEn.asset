@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05083533075f794bb8ff8ace68aa8ce, type: 3}
   m_Name: WinEn
   m_EditorClassIdentifier: 
-  dialogue:
-  - The Enemy Wins
+  _dialogue:
+  - Der Gegner hat den Kampf gewonnen!

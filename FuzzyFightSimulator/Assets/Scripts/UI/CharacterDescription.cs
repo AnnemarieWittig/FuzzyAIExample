@@ -12,10 +12,10 @@ public class CharacterDescription : MonoBehaviour
 
     public void Initialize(Character character)
     {
-        NameText.text = character.characterName;
-        HpSlider.maxValue = character.maxHP;
-        HpSlider.value = character.currentHP;
-        SetHPText(character.currentHP);
+        NameText.text = character.CharacterName;
+        HpSlider.maxValue = character.MaxHP;
+        HpSlider.value = character.CurrentHP;
+        SetHPText(character.CurrentHP);
     }
 
     public void SetHP(float hp)

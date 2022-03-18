@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05083533075f794bb8ff8ace68aa8ce, type: 3}
   m_Name: FullyAttacked
   m_EditorClassIdentifier: 
-  dialogue:
-  - The Enemy's Attack was succesfull.
-  - You take full Damage.
+  _dialogue:
+  - Der Angriff des Gegners ist erfolgreich.
+  - Du nimmst vollen Schaden.

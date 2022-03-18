@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05083533075f794bb8ff8ace68aa8ce, type: 3}
   m_Name: Escape
   m_EditorClassIdentifier: 
-  dialogue:
-  - You chose to escape.
+  _dialogue:
+  - Du fliehst aus dem Kampf.

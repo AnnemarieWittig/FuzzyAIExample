@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387715909481739446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.41, z: 0}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8507148962404283102}
@@ -44,29 +44,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4515bd4a6de164d911b51388082b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Enemy Character
-  trainingHours: 100
-  maxHP: 100
-  currentHP: 100
-  damage: 25
-  hitChance: 80
+  CharacterName: Gegner
+  TrainingHours: 100
+  MaxHP: 100
+  CurrentHP: 100
+  Damage: 25
+  HitChance: 100
   CritAllowance: 1
   HealAllowance: 1
-  CritChance: 25
-  HealChance: 75
-  HealValue: 20
-  generalChoice: {fileID: 11400000, guid: 50770e27b4323b94990099ab18b4261b, type: 2}
-  attackChoice: {fileID: 11400000, guid: 461c1505eead3034d816fa2270867cdd, type: 2}
-  defenseChoice: {fileID: 11400000, guid: 67ba00847653786409f3e73777630cdc, type: 2}
-  flightChoice: {fileID: 11400000, guid: a595ebd62fe86f84299cc246613ce6b0, type: 2}
-  attackAgainstDefender: {fileID: 11400000, guid: 7b5dd78df1788b94cbef54d862515700, type: 2}
-  attackAgainstOpen: {fileID: 11400000, guid: 449a8177533c5e34a80a623c8cfb3ba8, type: 2}
-  attackMiss: {fileID: 11400000, guid: ed5491f2a801d9d429fd076b9dbc1927, type: 2}
+  CritChance: 50
+  HealChance: 50
+  HealValue: 25
+  GeneralChoice: {fileID: 11400000, guid: 50770e27b4323b94990099ab18b4261b, type: 2}
+  AttackChoice: {fileID: 11400000, guid: 461c1505eead3034d816fa2270867cdd, type: 2}
+  DefenseChoice: {fileID: 11400000, guid: 67ba00847653786409f3e73777630cdc, type: 2}
+  EscapeChoice: {fileID: 11400000, guid: a595ebd62fe86f84299cc246613ce6b0, type: 2}
+  AttackAgainstDefender: {fileID: 11400000, guid: 7b5dd78df1788b94cbef54d862515700, type: 2}
+  AttackAgainstOpen: {fileID: 11400000, guid: 449a8177533c5e34a80a623c8cfb3ba8, type: 2}
+  AttackMiss: {fileID: 11400000, guid: ed5491f2a801d9d429fd076b9dbc1927, type: 2}
   CriticalAttack: {fileID: 11400000, guid: dcb145736b2a1714cb3dfae49ef75167, type: 2}
   SelfHealed: {fileID: 11400000, guid: 247105ef8660c374183d43ce2dc76649, type: 2}
   WinMessage: {fileID: 11400000, guid: 21923fb1ceb8a2149a2a573b212d921d, type: 2}
   WinScreenMessage: {fileID: 11400000, guid: 725b1568fe4d009429253120bdaa07ae, type: 2}
-  animator: {fileID: 0}
+  Animator: {fileID: 0}
 --- !u!1 &7215157538837002824
 GameObject:
   m_ObjectHideFlags: 0

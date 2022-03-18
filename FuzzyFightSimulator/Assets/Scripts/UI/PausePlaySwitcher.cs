@@ -11,14 +11,14 @@ public class PausePlaySwitcher : MonoBehaviour
 
     public void Resume()
     {
-        changeActiveOfGame(true);
+        ChangeActiveOfGame(true);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
     public void Pause()
     {
-        changeActiveOfGame(false);
+        ChangeActiveOfGame(false);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
@@ -29,11 +29,8 @@ public class PausePlaySwitcher : MonoBehaviour
         menu.EndGameScreen(dialogue);
     }
 
-    private void changeActiveOfGame(bool active)
+    private void ChangeActiveOfGame(bool active)
     {
         PauseMenuUI.SetActive(!active);
-        GameInterface.SetActive(active);
-        PlayerField.SetActive(active);
-        EnemyField.SetActive(active);
     }
 }

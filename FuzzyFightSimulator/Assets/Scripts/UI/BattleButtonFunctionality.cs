@@ -6,52 +6,52 @@ using TMPro;
 
 public class BattleButtonFunctionality : MonoBehaviour
 {
-    [SerializeField] BattleSystem battleSystem;
-    [SerializeField] Button[] fightButtons;
+    [SerializeField] BattleSystem BattleSystem;
+    [SerializeField] Button[] FightButtons;
 
     public void OnAttackButton()
     {
         Debug.Log("Button Pressed");
-        BattleState state = battleSystem.GetBattleState();
+        BattleState state = BattleSystem.GetBattleState();
         if (state != BattleState.PLAYERTURN)
         {
             return;
         }
         else
         {
-            StartCoroutine(battleSystem.PlayerAttack());
+            StartCoroutine(BattleSystem.PlayerAttack());
         }
     }
 
     public void OnDefenseButton()
     {
-        BattleState state = battleSystem.GetBattleState();
+        BattleState state = BattleSystem.GetBattleState();
         if (state != BattleState.PLAYERTURN)
         {
             return;
         }
         else
         {
-            StartCoroutine(battleSystem.PlayerDefense());
+            StartCoroutine(BattleSystem.PlayerDefense());
         }
     }
 
     public void OnFleeButton()
     {
-        BattleState state = battleSystem.GetBattleState();
+        BattleState state = BattleSystem.GetBattleState();
         if (state != BattleState.PLAYERTURN)
         {
             return;
         }
         else
         {
-            StartCoroutine(battleSystem.CharacterFlees());
+            StartCoroutine(BattleSystem.CharacterFlees());
         }
     }
 
     public void deactivateFightButtons()
     {
-        foreach (var button in fightButtons)
+        foreach (var button in FightButtons)
         {
             button.interactable = false;
         }
@@ -59,7 +59,7 @@ public class BattleButtonFunctionality : MonoBehaviour
 
     public void activateFightButtons()
     {
-        foreach (var button in fightButtons)
+        foreach (var button in FightButtons)
         {
             button.interactable = true;
         }

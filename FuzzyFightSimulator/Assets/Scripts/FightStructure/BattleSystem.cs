@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, END }
 
@@ -8,6 +9,7 @@ public class BattleSystem : MonoBehaviour
     public BattleState state;
 
     [Header("Player")]
+    [SerializeField] public Toggle PlayerAutomaticToggle;
     [SerializeField] public GameObject playerPrefab;
     [SerializeField] public Transform playerPosition;
     [SerializeField] public CharacterAI playerCharacterAI;
@@ -20,15 +22,17 @@ public class BattleSystem : MonoBehaviour
     private Character enemyCharacter;
 
     [Header("Battle UI")]
-    [SerializeField] public DialogueObject initialDialogue;
     [SerializeField] public CharacterDescription PlayerWindow;
     [SerializeField] public CharacterDescription EnemyWindow;
-    [SerializeField] public DialogueUI Dialogue;
     [SerializeField] public BattleButtonFunctionality ButtonActions;
 
     [Header("Pause Menu UI")]
     [SerializeField] public PausePlaySwitcher PausePlay;
     [SerializeField] public MainMenuFunctionality MainMenu;
+
+    [Header("Dialogue")]
+    [SerializeField] public DialogueUI DialoguePlayer;
+    [SerializeField] public DialogueObject initialDialogue;
     private CharacterActions actions;
 
     void Start()
@@ -46,28 +50,44 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(InitializeFight());
     }
 
-    private void removeCharacters()
-    {
-        Destroy(playerCharacter);
-        Destroy(enemyCharacter);
-    }
-
     private IEnumerator PlayerTurn()
     {
+        if (state != BattleState.PLAYERTURN)
+            Debug.Log("Error");
         playerCharacter.StopDefense();
-        yield return StartCoroutine(Dialogue.RunDialogue(playerCharacter.generalChoice));
-        ButtonActions.activateFightButtons();
+        yield return StartCoroutine(DialoguePlayer.RunDialogue(playerCharacter.GeneralChoice));
+        if (PlayerAutomaticToggle.isOn == false)
+        {
+            ButtonActions.activateFightButtons();
+        }
+        else
+        {
+            switch (playerCharacterAI.MakeBattleDecision())
+            {
+                case BattleChoices.ESCAPE:
+                    StartCoroutine(CharacterFlees());
+                    break;
+
+                case BattleChoices.BLOCK:
+                    StartCoroutine(PlayerDefense());
+                    break;
+
+                case BattleChoices.ATTACK:
+                    StartCoroutine(PlayerAttack());
+                    break;
+            }
+        }
     }
 
     public IEnumerator PlayerAttack()
     {
-        yield return StartCoroutine(actions.InitiateAttack(playerCharacter, enemyCharacter, EnemyWindow, Dialogue));
+        yield return StartCoroutine(actions.InitiateAttack(playerCharacter, enemyCharacter, EnemyWindow, DialoguePlayer));
         moveToEnemyTurn();
     }
 
     public IEnumerator PlayerDefense()
     {
-        yield return StartCoroutine(actions.InitiateDefense(playerCharacter, Dialogue, PlayerWindow));
+        yield return StartCoroutine(actions.InitiateDefense(playerCharacter, DialoguePlayer, PlayerWindow));
         moveToEnemyTurn();
     }
 
@@ -86,8 +106,8 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.ENEMYTURN)
             Debug.Log("Error");
         enemyCharacter.StopDefense();
-        yield return StartCoroutine(Dialogue.RunDialogue(enemyCharacter.generalChoice));
-        BattleChoices choice = enemyCharacterAI.makeBattleDecision();
+        yield return StartCoroutine(DialoguePlayer.RunDialogue(enemyCharacter.GeneralChoice));
+        BattleChoices choice = enemyCharacterAI.MakeBattleDecision();
         switch (choice)
         {
             case BattleChoices.ESCAPE:
@@ -106,13 +126,13 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator EnemyAttack()
     {
-        yield return StartCoroutine(actions.InitiateAttack(enemyCharacter, playerCharacter, PlayerWindow, Dialogue));
+        yield return StartCoroutine(actions.InitiateAttack(enemyCharacter, playerCharacter, PlayerWindow, DialoguePlayer));
         moveToPlayerTurn();
     }
 
     private IEnumerator EnemyDefense()
     {
-        yield return StartCoroutine(actions.InitiateDefense(enemyCharacter, Dialogue, EnemyWindow));
+        yield return StartCoroutine(actions.InitiateDefense(enemyCharacter, DialoguePlayer, EnemyWindow));
         moveToPlayerTurn();
     }
 
@@ -147,12 +167,12 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.PLAYERTURN)
         {
-            yield return StartCoroutine(Dialogue.RunDialogue(playerCharacter.flightChoice));
+            yield return StartCoroutine(DialoguePlayer.RunDialogue(playerCharacter.EscapeChoice));
             StartCoroutine(EndBattle(enemyCharacter.WinMessage, enemyCharacter.WinScreenMessage));
         }
         else if (state == BattleState.ENEMYTURN)
         {
-            yield return StartCoroutine(Dialogue.RunDialogue(enemyCharacter.flightChoice));
+            yield return StartCoroutine(DialoguePlayer.RunDialogue(enemyCharacter.EscapeChoice));
             StartCoroutine(EndBattle(playerCharacter.WinMessage, playerCharacter.WinScreenMessage));
         }
     }
@@ -160,7 +180,7 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator EndBattle(DialogueObject winText, DialogueObject endScreenText)
     {
         state = BattleState.END;
-        yield return StartCoroutine(Dialogue.RunDialogue(winText));
+        yield return StartCoroutine(DialoguePlayer.RunDialogue(winText));
         PausePlay.EndGame(endScreenText, MainMenu);
     }
 
@@ -169,11 +189,11 @@ public class BattleSystem : MonoBehaviour
         actions = GetComponent<CharacterActions>();
         GameObject playerGO = Instantiate(playerPrefab, playerPosition);
         playerCharacter = playerGO.GetComponent<Character>();
-        playerCharacterAI.aiCharacter = playerCharacter;
+        playerCharacterAI.AiCharacter = playerCharacter;
 
         GameObject enemyGO = Instantiate(enemyPrefab, enemyPosition);
         enemyCharacter = enemyGO.GetComponent<Character>();
-        enemyCharacterAI.aiCharacter = enemyCharacter;
+        enemyCharacterAI.AiCharacter = enemyCharacter;
     }
 
     private void InitializeMenus()
@@ -186,7 +206,7 @@ public class BattleSystem : MonoBehaviour
         PlayerWindow.Initialize(playerCharacter);
         EnemyWindow.Initialize(enemyCharacter);
 
-        yield return StartCoroutine(Dialogue.RunDialogue(initialDialogue));
+        yield return StartCoroutine(DialoguePlayer.RunDialogue(initialDialogue));
         state = BattleState.PLAYERTURN;
         StartCoroutine(PlayerTurn());
     }
@@ -194,7 +214,7 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator playDialogueUi(DialogueObject dialogueObject)
     {
         Debug.Log("playDialogueUi");
-        Dialogue.showDialogue(dialogueObject);
+        DialoguePlayer.showDialogue(dialogueObject);
         yield return 0;
     }
 
