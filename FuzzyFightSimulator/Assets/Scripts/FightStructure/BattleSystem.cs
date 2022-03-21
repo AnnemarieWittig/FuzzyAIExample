@@ -151,11 +151,15 @@ public class BattleSystem : MonoBehaviour
     {
         if (playerCharacter.GetIsDead())
         {
+            enemyCharacter.StartWinAnimation();
+            playerCharacter.StartDeathAnimation();
             StartCoroutine(EndBattle(enemyCharacter.WinMessage, enemyCharacter.WinScreenMessage));
             return true;
         }
         else if (enemyCharacter.GetIsDead())
         {
+            playerCharacter.StartWinAnimation();
+            enemyCharacter.StartDeathAnimation();
             StartCoroutine(EndBattle(playerCharacter.WinMessage, playerCharacter.WinScreenMessage));
             return true;
         }

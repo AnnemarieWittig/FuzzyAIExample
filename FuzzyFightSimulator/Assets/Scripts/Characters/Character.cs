@@ -45,11 +45,13 @@ public class Character : MonoBehaviour
     [SerializeField] public DialogueObject WinScreenMessage;
 
     [Header("Organisational")]
-    [SerializeField] public Animator Animator;
+    private Animator _animator;
 
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
+        _animator.SetBool("IsWinner", false);
         _defenseState = DefenseState.OPEN;
     }
 
@@ -62,6 +64,7 @@ public class Character : MonoBehaviour
             damageToApply *= 2;
             crit = true;
         }
+        _animator.SetTrigger("Attack");
         enemy.TakeDamage(damageToApply);
         enemyInfo.SetHP(enemy.CurrentHP);
         return crit;
@@ -69,26 +72,32 @@ public class Character : MonoBehaviour
 
     private void TakeDamage(float Damage)
     {
+        _animator.SetTrigger("Hurt");
         if (_defenseState == DefenseState.DEFENDING)
             Damage = (float)(Damage / 2);
 
         CurrentHP -= Damage;
 
         if (CurrentHP <= 0)
+        {
+            _animator.SetBool("IsDead", true);
             isDead = true;
+        }
         else
-            isDead = false;
+        { isDead = false; }
     }
 
     public bool StartDefense(CharacterDescription myWindow)
     {
         _defenseState = DefenseState.DEFENDING;
+        _animator.SetBool("IsDefending", true);
         if (HealAllowance && CalculateSuccessOfAction(HealChance))
         {
             CurrentHP += HealValue;
             if (CurrentHP > MaxHP)
                 CurrentHP = MaxHP;
             myWindow.SetHP(CurrentHP);
+            _animator.SetTrigger("Heal");
             return true;
         }
 
@@ -98,6 +107,7 @@ public class Character : MonoBehaviour
 
     public void StopDefense()
     {
+        _animator.SetBool("IsDefending", false);
         _defenseState = DefenseState.OPEN;
         //animator.SetBool("defending", false);
     }
@@ -109,6 +119,16 @@ public class Character : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    public void StartWinAnimation()
+    {
+        _animator.SetBool("IsWinner", true);
+    }
+
+    public void StartDeathAnimation()
+    {
+        _animator.SetTrigger("Death");
     }
 
     public bool GetIsDead() { return isDead; }
