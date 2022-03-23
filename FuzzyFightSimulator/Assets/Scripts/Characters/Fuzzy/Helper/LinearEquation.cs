@@ -3,18 +3,18 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Equations/LinearEquations")]
 public class LinearEquation : ScriptableObject
 {
-    [SerializeField] public double m;
-    [SerializeField] public double b;
+    [SerializeField] public double M;
+    [SerializeField] public double B;
 
     public void initialize(double m_init, double b_init)
     {
-        this.m = m_init;
-        this.b = b_init;
+        this.M = m_init;
+        this.B = b_init;
     }
 
     public double GetY(double x)
     {
-        return (double)m * x + b;
+        return (double)M * x + B;
     }
 
     public static LinearEquation GenerateLinearEquation(double m_init, double b_init)

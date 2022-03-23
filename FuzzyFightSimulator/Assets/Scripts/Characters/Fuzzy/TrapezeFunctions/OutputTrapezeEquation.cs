@@ -4,14 +4,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Equations/OutputTrapezeEquations")]
 public class OutputTrapezeEquation : TrapezeEquation
 {
-    [SerializeField] private BattleChoices correspondingEnum;
+    [SerializeField] private BattleChoices CorrespondingEnum;
 
     public Rectangle CutTrapezeHorizontallyAndGenerateRectangle(LinearEquation horizontalLine)
     {
-        double height = horizontalLine.b;
+        double height = horizontalLine.B;
         List<LinearEquation> equationsToCut = GetVerticalLines();
         if (equationsToCut.Count == 1)
-            return GenerateRectangleWithOneIntersection(horizontalLine, equationsToCut[0], intersectionPoints[0], intersectionPoints[intersectionPoints.Length - 1]);
+            return GenerateRectangleWithOneIntersection(horizontalLine, equationsToCut[0], IntersectionPoints[0], IntersectionPoints[IntersectionPoints.Length - 1]);
         else if (equationsToCut.Count == 2)
             return GenerateRectangleWithTwoIntersections(horizontalLine, equationsToCut[0], equationsToCut[1]);
         else
@@ -21,7 +21,7 @@ public class OutputTrapezeEquation : TrapezeEquation
 
     private Rectangle GenerateRectangleWithOneIntersection(LinearEquation horizontalLine, LinearEquation FirstLineToCut, double min, double max)
     {
-        double height = horizontalLine.b;
+        double height = horizontalLine.B;
         double intersectionX = CalculacteIntersection(FirstLineToCut, horizontalLine);
         double rectangleStart = intersectionX;
         double rectangleEnd = intersectionX;
@@ -34,7 +34,7 @@ public class OutputTrapezeEquation : TrapezeEquation
 
     private Rectangle GenerateRectangleWithTwoIntersections(LinearEquation horizontalLine, LinearEquation FirstLineToCut, LinearEquation SecondLineToCut)
     {
-        double height = horizontalLine.b;
+        double height = horizontalLine.B;
         double firstIntersection = CalculacteIntersection(FirstLineToCut, horizontalLine);
         double secondIntersection = CalculacteIntersection(SecondLineToCut, horizontalLine);
         if (firstIntersection <= secondIntersection)
@@ -46,13 +46,13 @@ public class OutputTrapezeEquation : TrapezeEquation
     private List<LinearEquation> GetVerticalLines()
     {
         List<LinearEquation> verticalEquations = new List<LinearEquation>();
-        foreach (var line in equations)
+        foreach (var line in Equations)
         {
-            if ((double)line.m != 0.0d)
+            if ((double)line.M != 0d)
                 verticalEquations.Add(line);
         }
         return verticalEquations;
     }
 
-    public BattleChoices getCorrespongingBattleChoice() => correspondingEnum;
+    public BattleChoices getCorrespongingBattleChoice() => CorrespondingEnum;
 }

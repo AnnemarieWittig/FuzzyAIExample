@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
   m_Name: 2_gut
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
-  - 65
+  - 50
   - 80
   - 100
-  equations:
+  Equations:
   - {fileID: 11400000, guid: 023a73efc7552bb48b6c68be1cf56936, type: 2}
   - {fileID: 11400000, guid: d7e3e84cf06a0bc4994188a4c33e7628, type: 2}
   - {fileID: 11400000, guid: 3cbd06e0d69e95249899cce4cf4710f6, type: 2}
-  label: Trefferchance - Gut
-  wishedOutcome: 0
+  Label: Trefferchance - Gut
+  WishedOutcome: 0

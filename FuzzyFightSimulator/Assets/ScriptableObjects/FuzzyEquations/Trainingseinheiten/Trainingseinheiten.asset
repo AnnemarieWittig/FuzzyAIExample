@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db652343628e6844491ef81f452c734f, type: 3}
   m_Name: Trainingseinheiten
   m_EditorClassIdentifier: 
-  label: Trainingseinheiten
-  inputTrapezeEquations:
+  Label: Trainingseinheiten
+  InputTrapezeEquations:
   - {fileID: 11400000, guid: f7133834b0b16bf4bb800f2cc50999f2, type: 2}
   - {fileID: 11400000, guid: 2a672d6cba0fa4a4582f85bb470c044e, type: 2}
   - {fileID: 11400000, guid: a5db9a40fe787c04785b4c1db5e0074e, type: 2}

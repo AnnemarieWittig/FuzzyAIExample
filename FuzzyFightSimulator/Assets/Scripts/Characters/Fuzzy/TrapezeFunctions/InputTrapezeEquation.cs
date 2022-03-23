@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Equations/InputTrapezeEquations")]
 public class InputTrapezeEquation : TrapezeEquation
 {
-    [SerializeField] public BattleChoices wishedOutcome;
+    [SerializeField] public BattleChoices WishedOutcome;
 
-    public BattleChoices getWishedOutcome => wishedOutcome;
+    public BattleChoices getWishedOutcome => WishedOutcome;
 }

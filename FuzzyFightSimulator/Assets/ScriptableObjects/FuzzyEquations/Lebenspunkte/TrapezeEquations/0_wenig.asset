@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
   m_Name: 0_wenig
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
-  - 20
-  - 33
+  - 15
+  - 35
   - 100
-  equations:
+  Equations:
   - {fileID: 11400000, guid: f7cd13a7107838143bcdfd7a37a035ab, type: 2}
   - {fileID: 11400000, guid: 68579a534b607ed4da4ddf850c1ef5e0, type: 2}
   - {fileID: 11400000, guid: 3df00b1da6479a34d8ff3514b5cbc13b, type: 2}
-  label: Lebenspunkte - Wenig
-  wishedOutcome: 2
+  Label: Lebenspunkte - Wenig
+  WishedOutcome: 2

@@ -2,64 +2,40 @@ using UnityEngine;
 
 public class TrapezeEquation : ScriptableObject, TrapezeEquationInterface
 {
-    [SerializeField] public double[] intersectionPoints;
-    [SerializeField] public LinearEquation[] equations;
-    [SerializeField] public string label;
+    [SerializeField] public double[] IntersectionPoints;
+    [SerializeField] public LinearEquation[] Equations;
+    [SerializeField] public string Label;
 
     public double CalculateY(double input)
     {
-        if (!(intersectionPoints[0] <= input || input <= intersectionPoints[intersectionPoints.Length - 1]))
+        if (!(IntersectionPoints[0] <= input || input <= IntersectionPoints[IntersectionPoints.Length - 1]))
             return -1;
 
-        for (int i = 0; i < intersectionPoints.Length - 1; i++)
+        for (int i = 0; i < IntersectionPoints.Length - 1; i++)
         {
-            if (i % 2 != 0 && (intersectionPoints[i] < input && input < intersectionPoints[i + 1]))
-                return equations[i].GetY(input);
+            if (i % 2 != 0 && (IntersectionPoints[i] < input && input < IntersectionPoints[i + 1]))
+                return Equations[i].GetY(input);
 
-            else if (i % 2 == 0 && (intersectionPoints[i] <= input && input <= intersectionPoints[i + 1]))
-                return equations[i].GetY(input);
+            else if (i % 2 == 0 && (IntersectionPoints[i] <= input && input <= IntersectionPoints[i + 1]))
+                return Equations[i].GetY(input);
         }
         return -1;
     }
 
     public double CalculacteIntersection(LinearEquation one, LinearEquation two)
     {
-        double denominator = (double)one.m - two.m;
-        double numerator = (double)two.b - one.b;
+        double denominator = (double)one.M - two.M;
+        double numerator = (double)two.B - one.B;
         return (double)numerator / denominator;
     }
 
     /*
-        public LinearEquation GetEquationForInput(double x)
-        {
-            if (!(intersectionPoints[0] <= x || x <= intersectionPoints[intersectionPoints.Length - 1]))
-                return null;
-
-            else if (intersectionPoints[0] <= x && x <= intersectionPoints[1])
-                return equations[0];
-
-            else if (intersectionPoints[1] < x && x < intersectionPoints[2])
-                return equations[1];
-
-            else if (intersectionPoints[2] <= x && x <= intersectionPoints[3])
-                return equations[2];
-
-            if (intersectionPoints.Length > 3 && equations.Length > 3)
-            {
-                if (intersectionPoints[3] <= x && x <= intersectionPoints[4])
-                    return equations[3];
-            }
-            return null;
-        }
-    */
-
-    /*
     Testcase 1
-        equations = new LinearEquation[3];
-        equations[0] = new LinearEquation(0, 1);
-        equations[1] = new LinearEquation((-1d / 18d), (11d / 6d));
-        equations[2] = new LinearEquation(0, 0);
-        intersectionPoints = new[] { 0.0, 15.0, 33.0, 100.0 };
+        Equations = new LinearEquation[3];
+        Equations[0] = new LinearEquation(0, 1);
+        Equations[1] = new LinearEquation((-1d / 18d), (11d / 6d));
+        Equations[2] = new LinearEquation(0, 0);
+        IntersectionPoints = new[] { 0.0, 15.0, 33.0, 100.0 };
         Debug.Log("Für x=" + 0 + " ergibt sich " + CalculateY(0));
         Debug.Log("Für x=" + 15 + " ergibt sich " + CalculateY(15));
         Debug.Log("Für x=" + 16 + " ergibt sich " + CalculateY(16));
@@ -75,13 +51,13 @@ public class TrapezeEquation : ScriptableObject, TrapezeEquationInterface
 
     /*
     Testcase 2
-        equations = new LinearEquation[5];
-        equations[0] = new LinearEquation(0, 0);
-        equations[1] = new LinearEquation((1d / 18d), (-5d / 6d));
-        equations[2] = new LinearEquation(0, 1);
-        equations[3] = new LinearEquation((-1d / 15d), (16d / 3d));
-        equations[4] = new LinearEquation(0, 0);
-        intersectionPoints = new[] { 0.0, 15.0, 33.0, 65.0, 80.0, 100.0 };
+        Equations = new LinearEquation[5];
+        Equations[0] = new LinearEquation(0, 0);
+        Equations[1] = new LinearEquation((1d / 18d), (-5d / 6d));
+        Equations[2] = new LinearEquation(0, 1);
+        Equations[3] = new LinearEquation((-1d / 15d), (16d / 3d));
+        Equations[4] = new LinearEquation(0, 0);
+        IntersectionPoints = new[] { 0.0, 15.0, 33.0, 65.0, 80.0, 100.0 };
         Debug.Log((-1.0 / 18.0));
         Debug.Log("Für x=" + 0 + " ergibt sich " + CalculateY(0));
         Debug.Log("Für x=" + 15 + " ergibt sich " + CalculateY(15));

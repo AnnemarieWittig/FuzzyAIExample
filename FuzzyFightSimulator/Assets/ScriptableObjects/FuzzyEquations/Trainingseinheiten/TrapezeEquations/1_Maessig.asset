@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
   m_Name: 1_Maessig
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
   - 0
   - 65
   - 65
   - 100
   - 100
-  equations:
+  Equations:
   - {fileID: 11400000, guid: 8b1005f2a2a0f814abd7cecf496393c8, type: 2}
   - {fileID: 11400000, guid: 3843f36de26b0f040b06c9335a0f74a8, type: 2}
   - {fileID: 11400000, guid: 7ee272c4f97ad2049bd6c1d62cd9c576, type: 2}
   - {fileID: 11400000, guid: 3369d2bc1d366e7448a3d63b7cc93cc2, type: 2}
   - {fileID: 11400000, guid: 792c1ec8c31bedb45b79a99f4cb15495, type: 2}
-  label: "Trainingseinheiten - M\xE4\xDFig"
-  wishedOutcome: 1
+  Label: "Trainingseinheiten - M\xE4\xDFig"
+  WishedOutcome: 1

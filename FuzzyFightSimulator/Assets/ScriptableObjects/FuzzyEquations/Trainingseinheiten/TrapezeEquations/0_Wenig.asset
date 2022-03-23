@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
   m_Name: 0_Wenig
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
   - 0
   - 65
   - 100
-  equations:
+  Equations:
   - {fileID: 11400000, guid: 43a9515cbfa64f74da0245db2d50a36e, type: 2}
   - {fileID: 11400000, guid: 52e64c6422934f34ca3037c9814d4814, type: 2}
   - {fileID: 11400000, guid: 1c769fa1daedfac45af3d73ad77f3b03, type: 2}
-  label: Trainingseinheiten - Wenig
-  wishedOutcome: 2
+  Label: Trainingseinheiten - Wenig
+  WishedOutcome: 2

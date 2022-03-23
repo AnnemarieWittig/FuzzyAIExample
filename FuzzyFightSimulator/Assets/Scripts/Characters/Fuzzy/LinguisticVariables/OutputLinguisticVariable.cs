@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Variables/OutputLinguisticVariable")]
 public class OutputLinguisticVariable : LinguisticVariable
 {
-    [SerializeField] public OutputTrapezeEquation[] outputEquations;
+    [SerializeField] public OutputTrapezeEquation[] OutputEquations;
 
     private void Start()
     {
@@ -14,7 +14,7 @@ public class OutputLinguisticVariable : LinguisticVariable
     public List<Rectangle> calculateDefuzzyfication(Dictionary<BattleChoices, double> membershipToLinguisticValues)
     {
         List<Rectangle> rectanglesForAOM = new List<Rectangle>();
-        foreach (OutputTrapezeEquation membershipEquation in outputEquations)
+        foreach (OutputTrapezeEquation membershipEquation in OutputEquations)
         {
             Rectangle generatedRectangle = calculateRectangleFromMembershipEquation(membershipEquation, membershipToLinguisticValues);
             rectanglesForAOM.Add(generatedRectangle);
@@ -33,7 +33,7 @@ public class OutputLinguisticVariable : LinguisticVariable
     private void checkForDuplicateEquations()
     {
         List<BattleChoices> counter = new List<BattleChoices>();
-        foreach (OutputTrapezeEquation equation in outputEquations)
+        foreach (OutputTrapezeEquation equation in OutputEquations)
         {
             BattleChoices choice = equation.getCorrespongingBattleChoice();
             if (counter.Contains(choice))

@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
   m_Name: 1_maessig
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
-  - 20
-  - 33
-  - 66
-  - 79
+  - 15
+  - 35
+  - 40
+  - 60
   - 100
-  equations:
+  Equations:
   - {fileID: 11400000, guid: 52bf9d65c16f2f5469226a543af41d3c, type: 2}
   - {fileID: 11400000, guid: 810dfd44abcd05e46a39dc0b9a532a71, type: 2}
   - {fileID: 11400000, guid: d3e753bd06363934d8efea06ad13d052, type: 2}
   - {fileID: 11400000, guid: 51b3270bd5f18ef4ea0c9f9fa5df3f83, type: 2}
   - {fileID: 11400000, guid: bd815259dcac4ea47a2bdbff56f731ad, type: 2}
-  label: "Lebenspunkte - M\xE4\xDFig"
-  wishedOutcome: 1
+  Label: "Lebenspunkte - M\xE4\xDFig"
+  WishedOutcome: 1

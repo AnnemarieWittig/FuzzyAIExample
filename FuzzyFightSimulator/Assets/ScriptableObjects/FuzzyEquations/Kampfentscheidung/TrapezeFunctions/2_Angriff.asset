@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7f9ffde95593c4c9dc780454718873, type: 3}
   m_Name: 2_Angriff
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
-  - 50
-  - 65
+  - 40
+  - 55
   - 100
-  equations:
+  Equations:
   - {fileID: 11400000, guid: 8fbc78eb5c9b3e3429c791df6ba001c4, type: 2}
   - {fileID: 11400000, guid: fd539c7e3fe7d4944b280305b022a261, type: 2}
   - {fileID: 11400000, guid: d1e2d63e8918a164f8e6e1733054fa27, type: 2}
-  label: Kampfentscheidung - Angriff
-  correspondingEnum: 0
+  Label: Kampfentscheidung - Angriff
+  CorrespondingEnum: 0

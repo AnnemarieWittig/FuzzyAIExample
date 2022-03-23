@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db652343628e6844491ef81f452c734f, type: 3}
   m_Name: Trefferchance
   m_EditorClassIdentifier: 
-  label: Trefferchance
-  inputTrapezeEquations:
+  Label: Trefferchance
+  InputTrapezeEquations:
   - {fileID: 11400000, guid: eeb7a4b93b85c784fa0ab17ff508b479, type: 2}
   - {fileID: 11400000, guid: 068e295b77582254a8d1cc7d74c95e1b, type: 2}
   - {fileID: 11400000, guid: 50570d575c87f7c43a9dca9a5edd6d03, type: 2}

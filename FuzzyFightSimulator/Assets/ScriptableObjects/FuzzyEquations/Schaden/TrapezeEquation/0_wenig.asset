@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
   m_Name: 0_wenig
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
-  - 7.5
-  - 17.5
-  - 50
-  equations:
+  - 10
+  - 15
+  - 100
+  Equations:
   - {fileID: 11400000, guid: 27b795df27b173f40ae1d555994da07e, type: 2}
   - {fileID: 11400000, guid: 2808990ead985434da82d6e7a0737ba5, type: 2}
   - {fileID: 11400000, guid: 7c991ba29c2e1a04f8205e2ae052db9f, type: 2}
-  label: Schaden - Wenig
-  wishedOutcome: 1
+  Label: Schaden - Wenig
+  WishedOutcome: 1

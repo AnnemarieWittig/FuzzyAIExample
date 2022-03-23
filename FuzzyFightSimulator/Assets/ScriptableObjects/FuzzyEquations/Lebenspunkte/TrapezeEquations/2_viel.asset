@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
   m_Name: 2_viel
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
-  - 66
-  - 79
+  - 40
+  - 60
   - 100
-  equations:
+  Equations:
   - {fileID: 11400000, guid: 3c8c848a782712845b2f2b2759751f32, type: 2}
   - {fileID: 11400000, guid: a4f33ca79409b4248a76c526fa1f068a, type: 2}
   - {fileID: 11400000, guid: d02efecb5702f4e4eb64c9e09a69fe48, type: 2}
-  label: Lebenspunkte - Viel
-  wishedOutcome: 0
+  Label: Lebenspunkte - Viel
+  WishedOutcome: 0

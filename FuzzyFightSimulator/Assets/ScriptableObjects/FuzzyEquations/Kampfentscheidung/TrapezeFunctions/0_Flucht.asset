@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7f9ffde95593c4c9dc780454718873, type: 3}
   m_Name: 0_Flucht
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
-  - 15
-  - 30
+  - 10
+  - 25
   - 100
-  equations:
+  Equations:
   - {fileID: 11400000, guid: 03561b996b72f774abd50f804743fbf6, type: 2}
   - {fileID: 11400000, guid: 5c16a0ce1d4a1504ba67da5bdfde1532, type: 2}
   - {fileID: 11400000, guid: 30584927a5b0aad4997b22759b9e77ac, type: 2}
-  label: Kampfentscheidung - Flucht
-  correspondingEnum: 2
+  Label: Kampfentscheidung - Flucht
+  CorrespondingEnum: 2

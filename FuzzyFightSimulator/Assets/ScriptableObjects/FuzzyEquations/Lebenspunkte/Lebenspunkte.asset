@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db652343628e6844491ef81f452c734f, type: 3}
   m_Name: Lebenspunkte
   m_EditorClassIdentifier: 
-  label: Lebenspunkte
-  inputTrapezeEquations:
+  Label: Lebenspunkte
+  InputTrapezeEquations:
   - {fileID: 11400000, guid: 2c85ef642bcb6084887a1cb3ed7a0d59, type: 2}
   - {fileID: 11400000, guid: c2ff017a9d9bc504eaa2a12ec28ee11e, type: 2}
   - {fileID: 11400000, guid: 3283c673e3e41dd428f0465e7f0e8666, type: 2}

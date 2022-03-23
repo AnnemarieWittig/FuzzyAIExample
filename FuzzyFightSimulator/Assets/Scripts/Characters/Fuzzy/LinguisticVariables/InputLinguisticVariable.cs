@@ -5,11 +5,11 @@ using UnityEngine;
 public class InputLinguisticVariable : LinguisticVariable
 { //degree of membership
 
-    [SerializeField] public InputTrapezeEquation[] inputTrapezeEquations;
+    [SerializeField] public InputTrapezeEquation[] InputTrapezeEquations;
 
     public Dictionary<BattleChoices, double> GetHighestMembershipForRuleEvaluation(double input, Dictionary<BattleChoices, double> currentMembershipDegrees)
     {
-        foreach (InputTrapezeEquation equation in inputTrapezeEquations)
+        foreach (InputTrapezeEquation equation in InputTrapezeEquations)
         {
             BattleChoices eqChoice = equation.getWishedOutcome;
             currentMembershipDegrees[eqChoice] = getHigherMembershipDegree(equation, currentMembershipDegrees[eqChoice], input);

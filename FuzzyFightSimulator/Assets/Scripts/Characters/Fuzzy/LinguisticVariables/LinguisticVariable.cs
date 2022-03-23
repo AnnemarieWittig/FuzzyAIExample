@@ -4,7 +4,8 @@ public enum BattleChoices { ATTACK, BLOCK, ESCAPE }
 
 public class LinguisticVariable : ScriptableObject
 {
-    [SerializeField] public string label;
+    [SerializeField] public string Label;
 
-    public string getLabel() => label;
+
+    public string getLabel() => Label;
 }

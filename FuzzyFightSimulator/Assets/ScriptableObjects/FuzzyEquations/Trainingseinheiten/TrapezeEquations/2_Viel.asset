@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
   m_Name: 2_Viel
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
   - 65
   - 100
   - 100
-  equations:
+  Equations:
   - {fileID: 11400000, guid: 8bc5082b96f2d9c4fb43ebd6d488f2f9, type: 2}
   - {fileID: 11400000, guid: d1c76af01095e8f49a0ac30d5ad59e3d, type: 2}
   - {fileID: 11400000, guid: 654bae8200461ac4dae0096029af6c35, type: 2}
-  label: Trainingseinheiten - Viel
-  wishedOutcome: 0
+  Label: Trainingseinheiten - Viel
+  WishedOutcome: 0

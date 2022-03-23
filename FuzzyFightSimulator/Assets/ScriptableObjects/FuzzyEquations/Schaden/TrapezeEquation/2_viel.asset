@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
   m_Name: 2_viel
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
-  - 27.5
-  - 37.5
+  - 25
   - 50
-  equations:
+  - 100
+  Equations:
   - {fileID: 11400000, guid: 4aa2996e1f9226141920cb1e9db53568, type: 2}
   - {fileID: 11400000, guid: c5c5eb2d319b0e944bb6b5c243e70c9c, type: 2}
   - {fileID: 11400000, guid: aa3aa58f8864b6c4c9bebddd6d6a9ba6, type: 2}
-  label: Schaden - Viel
-  wishedOutcome: 0
+  Label: Schaden - Viel
+  WishedOutcome: 0

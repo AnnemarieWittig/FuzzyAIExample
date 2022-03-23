@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f1d0db5dd4da7479d085af39719576, type: 3}
   m_Name: Kampfentscheidung
   m_EditorClassIdentifier: 
-  label: Kampfentscheidung
-  outputEquations:
+  Label: Kampfentscheidung
+  OutputEquations:
   - {fileID: 11400000, guid: 4f1a8d0705b00174e95a07a1f3975268, type: 2}
   - {fileID: 11400000, guid: 95f8c47c67041374a90fe56a73bb7e55, type: 2}
   - {fileID: 11400000, guid: a91f7b9e9df03834981db73d6c9c8b1f, type: 2}

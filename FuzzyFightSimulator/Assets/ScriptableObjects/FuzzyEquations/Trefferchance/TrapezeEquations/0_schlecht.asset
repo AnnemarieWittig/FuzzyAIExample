@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6634361cba24cf40949c990eb27f168, type: 3}
   m_Name: 0_schlecht
   m_EditorClassIdentifier: 
-  intersectionPoints:
+  IntersectionPoints:
   - 0
-  - 15
-  - 33
+  - 10
+  - 35
   - 100
-  equations:
+  Equations:
   - {fileID: 11400000, guid: 2833ff7ac852462458725f05071cd930, type: 2}
   - {fileID: 11400000, guid: cb8522141ebd5bd4c8869c8f35e35151, type: 2}
   - {fileID: 11400000, guid: 7f3e1ab003a680e438a2a048bda45324, type: 2}
-  label: Trefferchance - Schlecht
-  wishedOutcome: 1
+  Label: Trefferchance - Schlecht
+  WishedOutcome: 1
