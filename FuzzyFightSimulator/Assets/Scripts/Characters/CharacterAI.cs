@@ -44,8 +44,9 @@ public class CharacterAI : MonoBehaviour
         else if (66 <= defuzziedValue && defuzziedValue <= 100)
             return BattleChoices.ATTACK;
         else
-            return BattleChoices.ESCAPE; //Error
+            throw new CannotTranslateValueToActionException("The defuzzied value is not within the given bounds and thus cannot be translated"); //Error
     }
+
     private double Aom(List<Rectangle> rectangles)
     {
         double numerator = 0d;
