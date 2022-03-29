@@ -4,6 +4,7 @@ using TMPro;
 
 public class CharacterMenu : MonoBehaviour
 {
+    #region Variables
     [SerializeField] public Character Char;
     [SerializeField] public CharacterDescription CharWindow;
     [Header("HP")]
@@ -29,6 +30,8 @@ public class CharacterMenu : MonoBehaviour
     [SerializeField] public TMP_InputField HealChance;
     [SerializeField] public TMP_InputField HealValue;
     [SerializeField] public TMP_Text[] HealTextsForColorChange;
+
+    #endregion
 
     private void Start()
     {
@@ -79,7 +82,6 @@ public class CharacterMenu : MonoBehaviour
     private void RandomEventInputFieldChanged(TMP_InputField field)
     {
         float input = float.Parse(field.text);
-        Debug.Log(input);
         float newValue = InputFieldValidation(input, 0, 100);
         field.text = newValue.ToString();
     }

@@ -4,7 +4,8 @@ using TMPro;
 
 public class WritingEffect : MonoBehaviour
 {
-    [SerializeField] private float speed = 50f;
+    [SerializeField] private float Speed = 50f;
+
     public Coroutine Run(string textToType, TMP_Text textLabel)
     {
         return StartCoroutine(TypeText(textToType, textLabel));
@@ -16,7 +17,7 @@ public class WritingEffect : MonoBehaviour
         int charIndex = 0;
         while (charIndex < textToType.Length)
         {
-            t += Time.deltaTime * speed;
+            t += Time.deltaTime * Speed;
             charIndex = Mathf.FloorToInt(t);
             charIndex = Mathf.Clamp(charIndex, 0, textToType.Length);
 

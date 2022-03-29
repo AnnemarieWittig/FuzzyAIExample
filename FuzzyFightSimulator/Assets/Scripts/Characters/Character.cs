@@ -4,6 +4,8 @@ public enum DefenseState { DEFENDING, OPEN }
 
 public class Character : MonoBehaviour
 {
+    #region Variables
+
     [Header("General Information")]
     [SerializeField] public string CharacterName;
     [SerializeField] public double TrainingHours;
@@ -47,6 +49,7 @@ public class Character : MonoBehaviour
     [Header("Organisational")]
     private Animator _animator;
 
+    #endregion
 
     private void Start()
     {
@@ -55,6 +58,7 @@ public class Character : MonoBehaviour
         _defenseState = DefenseState.OPEN;
     }
 
+    #region Actions
     public bool Attack(Character enemy, CharacterDescription enemyInfo)
     {
         float damageToApply = Damage;
@@ -79,12 +83,9 @@ public class Character : MonoBehaviour
         CurrentHP -= Damage;
 
         if (CurrentHP <= 0)
-        {
-            _animator.SetBool("IsDead", true);
             isDead = true;
-        }
         else
-        { isDead = false; }
+            isDead = false;
     }
 
     public bool StartDefense(CharacterDescription myWindow)
@@ -101,7 +102,6 @@ public class Character : MonoBehaviour
             return true;
         }
 
-        //animator.SetBool("defending", true);
         return false;
     }
 
@@ -109,7 +109,6 @@ public class Character : MonoBehaviour
     {
         _animator.SetBool("IsDefending", false);
         _defenseState = DefenseState.OPEN;
-        //animator.SetBool("defending", false);
     }
 
     public static bool CalculateSuccessOfAction(float chance)
@@ -120,6 +119,8 @@ public class Character : MonoBehaviour
         else
             return false;
     }
+
+    #endregion
 
     public void StartWinAnimation()
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Equations/OutputTrapezeEquations")]
 public class OutputTrapezeEquation : TrapezeEquation
 {
+    //Enum instead of BattleChoice to be more easily distinguishable from Rectangle.CorrespondingBattleChoice
     [SerializeField] private BattleChoices CorrespondingEnum;
 
     public Rectangle CutTrapezeHorizontallyAndGenerateRectangle(LinearEquation horizontalLine)
@@ -54,5 +55,5 @@ public class OutputTrapezeEquation : TrapezeEquation
         return verticalEquations;
     }
 
-    public BattleChoices getCorrespongingBattleChoice() => CorrespondingEnum;
+    public BattleChoices CorrespongingEnum => CorrespondingEnum;
 }

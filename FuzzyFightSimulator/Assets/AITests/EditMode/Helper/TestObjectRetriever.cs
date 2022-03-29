@@ -3,8 +3,13 @@ using UnityEngine;
 using System.Collections.Generic;
 using NUnit.Framework;
 
+
 public class TestObjectRetriever
 {
+    public static readonly double Delta = 0.000000000001;
+
+
+    #region In- and Output linguistic variables
 
     public static InputLinguisticVariable GetTrainingseinheiten()
     {
@@ -34,6 +39,13 @@ public class TestObjectRetriever
         return GetInputLinguisticVariable(_label, _pathToLinguisticVariable);
     }
 
+    public static OutputLinguisticVariable GetKampfentscheidung()
+    {
+        string _pathToLinguisticVariable = "Assets/ScriptableObjects/FuzzyEquations/Kampfentscheidung";
+        string _label = "Kampfentscheidung";
+        return GetOutputLinguisticVariable(_label, _pathToLinguisticVariable);
+    }
+
     public static InputLinguisticVariable GetInputLinguisticVariable(string scriptableObjectName, string objectPath)
     {
         string[] guids = AssetDatabase.FindAssets($"t:{nameof(InputLinguisticVariable)} {scriptableObjectName }", new[] { objectPath });
@@ -43,13 +55,6 @@ public class TestObjectRetriever
             Debug.LogWarning($"More than one {nameof(InputLinguisticVariable)} found named {scriptableObjectName}, taking first one");
 
         return (InputLinguisticVariable)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guids[0]), typeof(InputLinguisticVariable));
-    }
-
-    public static OutputLinguisticVariable GetKampfentscheidung()
-    {
-        string _pathToLinguisticVariable = "Assets/ScriptableObjects/FuzzyEquations/Kampfentscheidung";
-        string _label = "Kampfentscheidung";
-        return GetOutputLinguisticVariable(_label, _pathToLinguisticVariable);
     }
 
     public static OutputLinguisticVariable GetOutputLinguisticVariable(string scriptableObjectName, string objectPath)
@@ -62,6 +67,9 @@ public class TestObjectRetriever
 
         return (OutputLinguisticVariable)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guids[0]), typeof(OutputLinguisticVariable));
     }
+
+    #endregion
+    #region dictionary
 
     public static Dictionary<BattleChoices, double> GenerateEmptyDictionary()
     {
@@ -76,4 +84,36 @@ public class TestObjectRetriever
         dict.Add(BattleChoices.ESCAPE, escape);
         return dict;
     }
+
+    #endregion
+
+    #region Instantiate Monobehaviors
+    public static T CreateMonobehavior<T>()
+    {
+        return (T)System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(T));
+    }
+
+    public static CharacterAI GenerateCharacterAIMockup()
+    {
+        CharacterAI characterAi = TestObjectRetriever.CreateMonobehavior<CharacterAI>();
+        characterAi.Lebenspunkte = TestObjectRetriever.GetLebenspunkte();
+        characterAi.Schaden = TestObjectRetriever.GetSchaden();
+        characterAi.Trefferchance = TestObjectRetriever.GetTrefferchance();
+        characterAi.Trainingseinheiten = TestObjectRetriever.GetTrainingseinheiten();
+        characterAi.Kampfentscheidung = TestObjectRetriever.GetKampfentscheidung();
+        return characterAi;
+    }
+
+    public static Character GenerateCharacterMockup(float tc, float hp, float te, float dmg)
+    {
+        Character character = TestObjectRetriever.CreateMonobehavior<Character>();
+        character.HitChance = tc;
+        character.MaxHP = 100;
+        character.CurrentHP = hp;
+        character.TrainingHours = te;
+        character.Damage = dmg;
+        return character;
+    }
+
+    #endregion
 }

@@ -6,6 +6,8 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, END }
 
 public class BattleSystem : MonoBehaviour
 {
+    #region Variables
+
     public BattleState state;
 
     [Header("Player")]
@@ -35,21 +37,16 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] public DialogueObject initialDialogue;
     private CharacterActions actions;
 
+    #endregion
+
     void Start()
     {
-        ButtonActions.deactivateFightButtons();
+        ButtonActions.DeactivateFightButtons();
         initializeGame();
         PausePlay.Pause();
     }
 
-    private void initializeGame()
-    {
-        state = BattleState.START;
-        InitializeVariables();
-        InitializeMenus();
-        StartCoroutine(InitializeFight());
-    }
-
+    #region Player Turn Functions
     private IEnumerator PlayerTurn()
     {
         if (state != BattleState.PLAYERTURN)
@@ -58,7 +55,7 @@ public class BattleSystem : MonoBehaviour
         yield return StartCoroutine(DialoguePlayer.RunDialogue(playerCharacter.GeneralChoice));
         if (PlayerAutomaticToggle.isOn == false)
         {
-            ButtonActions.activateFightButtons();
+            ButtonActions.ActivateFightButtons();
         }
         else
         {
@@ -100,13 +97,18 @@ public class BattleSystem : MonoBehaviour
             StartCoroutine(EnemyTurn());
         }
     }
+    #endregion
 
+    #region Enemy Turn functions
     private IEnumerator EnemyTurn()
     {
         if (state != BattleState.ENEMYTURN)
             throw new NotCharacterTurnException("It's not the enemy's turn.");
+
         enemyCharacter.StopDefense();
+
         yield return StartCoroutine(DialoguePlayer.RunDialogue(enemyCharacter.GeneralChoice));
+
         BattleChoices choice = enemyCharacterAI.MakeBattleDecision();
         switch (choice)
         {
@@ -138,12 +140,28 @@ public class BattleSystem : MonoBehaviour
 
     private void moveToPlayerTurn()
     {
-        Debug.Log(playerCharacter.GetIsDead());
         bool end = CheckWinCondition();
         if (!end)
         {
             state = BattleState.PLAYERTURN;
             StartCoroutine(PlayerTurn());
+        }
+    }
+    #endregion
+
+    #region Game-Ending Functions
+
+    public IEnumerator CharacterFlees()
+    {
+        if (state == BattleState.PLAYERTURN)
+        {
+            yield return StartCoroutine(DialoguePlayer.RunDialogue(playerCharacter.EscapeChoice));
+            StartCoroutine(EndBattle(enemyCharacter.WinMessage, enemyCharacter.WinScreenMessage));
+        }
+        else if (state == BattleState.ENEMYTURN)
+        {
+            yield return StartCoroutine(DialoguePlayer.RunDialogue(enemyCharacter.EscapeChoice));
+            StartCoroutine(EndBattle(playerCharacter.WinMessage, playerCharacter.WinScreenMessage));
         }
     }
 
@@ -167,25 +185,22 @@ public class BattleSystem : MonoBehaviour
 
     }
 
-    public IEnumerator CharacterFlees()
-    {
-        if (state == BattleState.PLAYERTURN)
-        {
-            yield return StartCoroutine(DialoguePlayer.RunDialogue(playerCharacter.EscapeChoice));
-            StartCoroutine(EndBattle(enemyCharacter.WinMessage, enemyCharacter.WinScreenMessage));
-        }
-        else if (state == BattleState.ENEMYTURN)
-        {
-            yield return StartCoroutine(DialoguePlayer.RunDialogue(enemyCharacter.EscapeChoice));
-            StartCoroutine(EndBattle(playerCharacter.WinMessage, playerCharacter.WinScreenMessage));
-        }
-    }
-
     private IEnumerator EndBattle(DialogueObject winText, DialogueObject endScreenText)
     {
         state = BattleState.END;
         yield return StartCoroutine(DialoguePlayer.RunDialogue(winText));
         PausePlay.EndGame(endScreenText, MainMenu);
+    }
+    #endregion
+
+    #region Initializors
+
+    private void initializeGame()
+    {
+        state = BattleState.START;
+        InitializeVariables();
+        InitializeMenus();
+        StartCoroutine(InitializeFight());
     }
 
     private void InitializeVariables()
@@ -214,6 +229,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PLAYERTURN;
         StartCoroutine(PlayerTurn());
     }
+    #endregion
 
     public BattleState GetBattleState()
     {

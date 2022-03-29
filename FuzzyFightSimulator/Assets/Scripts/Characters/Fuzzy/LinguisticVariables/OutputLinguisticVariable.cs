@@ -17,15 +17,21 @@ public class OutputLinguisticVariable : LinguisticVariable
         foreach (OutputTrapezeEquation membershipEquation in OutputEquations)
         {
             Rectangle generatedRectangle = calculateRectangleFromMembershipEquation(membershipEquation, membershipToLinguisticValues);
-            rectanglesForAOM.Add(generatedRectangle);
+            if (generatedRectangle != null)
+            {
+                generatedRectangle.SetCorrespondingBattleChoice(membershipEquation.CorrespongingEnum);
+                rectanglesForAOM.Add(generatedRectangle);
+            }
         }
         return rectanglesForAOM;
     }
 
     private Rectangle calculateRectangleFromMembershipEquation(OutputTrapezeEquation membershipEquation, Dictionary<BattleChoices, double> membershipToLinguisticValues)
     {
-        BattleChoices correspondingChoice = membershipEquation.getCorrespongingBattleChoice();
+        BattleChoices correspondingChoice = membershipEquation.CorrespongingEnum;
         double membershipValue = membershipToLinguisticValues[correspondingChoice];
+        if (membershipValue.Equals(0d)) //Rectangle with maximum of 0 has no effect on  AOM and therefore does not need to be saved
+            return null;
         LinearEquation equationToCut = LinearEquation.GenerateLinearEquation(0, membershipValue);
         return membershipEquation.CutTrapezeHorizontallyAndGenerateRectangle(equationToCut);
     }
@@ -35,7 +41,7 @@ public class OutputLinguisticVariable : LinguisticVariable
         List<BattleChoices> counter = new List<BattleChoices>();
         foreach (OutputTrapezeEquation equation in OutputEquations)
         {
-            BattleChoices choice = equation.getCorrespongingBattleChoice();
+            BattleChoices choice = equation.CorrespongingEnum;
             if (counter.Contains(choice))
                 throw new LinguisticValueCannotHaveMultipleEquations("There are multiple equations for " + choice);
             else

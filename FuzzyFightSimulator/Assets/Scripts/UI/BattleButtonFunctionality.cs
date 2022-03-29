@@ -46,7 +46,7 @@ public class BattleButtonFunctionality : MonoBehaviour
         }
     }
 
-    public void deactivateFightButtons()
+    public void DeactivateFightButtons()
     {
         foreach (var button in FightButtons)
         {
@@ -54,7 +54,7 @@ public class BattleButtonFunctionality : MonoBehaviour
         }
     }
 
-    public void activateFightButtons()
+    public void ActivateFightButtons()
     {
         foreach (var button in FightButtons)
         {

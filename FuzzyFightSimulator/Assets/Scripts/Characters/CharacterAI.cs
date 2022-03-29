@@ -37,11 +37,11 @@ public class CharacterAI : MonoBehaviour
 
     private BattleChoices TranslateDefuzziedValueToAction(double defuzziedValue)
     {
-        if (0 <= defuzziedValue && defuzziedValue <= 33)
+        if (0 <= defuzziedValue && defuzziedValue <= 20)
             return BattleChoices.ESCAPE;
-        else if (33 < defuzziedValue && defuzziedValue < 66)
+        else if (20 < defuzziedValue && defuzziedValue < 50)
             return BattleChoices.BLOCK;
-        else if (66 <= defuzziedValue && defuzziedValue <= 100)
+        else if (50 <= defuzziedValue && defuzziedValue <= 100)
             return BattleChoices.ATTACK;
         else
             throw new CannotTranslateValueToActionException("The defuzzied value is not within the given bounds and thus cannot be translated"); //Error
@@ -53,8 +53,8 @@ public class CharacterAI : MonoBehaviour
         double denominator = 0d;
         foreach (Rectangle rectangle in rectangles)
         {
-            numerator += rectangle.getD() * rectangle.getMaximum;
-            denominator += rectangle.getMaximum;
+            numerator += rectangle.getD() * rectangle.Maximum;
+            denominator += rectangle.Maximum;
         }
         return (double)numerator / denominator;
     }
@@ -66,6 +66,11 @@ public class CharacterAI : MonoBehaviour
         dict.Add(BattleChoices.BLOCK, 0.0);
         dict.Add(BattleChoices.ATTACK, 0.0);
         return dict;
+    }
+
+    public double AOMTestWrapper(List<Rectangle> rectangles)
+    {
+        return Aom(rectangles);
     }
 
     /*

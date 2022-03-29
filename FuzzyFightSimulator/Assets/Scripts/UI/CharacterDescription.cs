@@ -19,13 +19,15 @@ public class CharacterDescription : MonoBehaviour
 
     public void SetHP(float hp)
     {
+        if (hp < 0)
+            hp = 0;
         HpSlider.value = hp;
         SetHPText(hp);
     }
 
     private void SetHPText(float hp)
     {
-        hp = Mathf.Round(hp * 10.0f) * 0.1f; ;
+        hp = Mathf.Round(hp * 10.0f) * 0.1f;
         CurrHP.text = hp.ToString() + "/100";
     }
 

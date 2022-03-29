@@ -4,20 +4,14 @@ using System.Collections;
 
 public class DialogueUI : MonoBehaviour
 {
-    [SerializeField] TMP_Text dialogueUI;
-    [SerializeField] private DialogueObject testDialogue;
-    private WritingEffect typewriter;
-    private bool coroutineRunning;
+    [SerializeField] public TMP_Text dialogueUI;
+    [SerializeField] public TMP_Text Hint;
+    private WritingEffect Typewriter;
+
 
     private void Start()
     {
-        typewriter = GetComponent<WritingEffect>();
-    }
-
-    public void showDialogue(DialogueObject dialogueObject)
-    {
-        dialogueUI.enabled = true;
-        StartCoroutine(RunDialogue(dialogueObject));
+        Typewriter = GetComponent<WritingEffect>();
     }
 
     public IEnumerator RunDialogue(DialogueObject dialogueObject)
@@ -30,33 +24,24 @@ public class DialogueUI : MonoBehaviour
         {
             string dialogueText = dialogueObject.Dialogue[i];
             Debug.Log(dialogueText);
-            yield return typewriter.Run(dialogueText, dialogueUI);
-            //if (i != (dialogueObject.Dialogue.Length - 1))
-            activateHint();
+            yield return Typewriter.Run(dialogueText, dialogueUI);
+
+            ActivateHint();
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Mouse0));
-            deactivteHint();
+            DeactivteHint();
+
             yield return 0;
         }
-        //closeDialogueBox();
     }
 
-    private void activateHint()
+    private void ActivateHint()
     {
-        //TODO
+        Hint.enabled = true;
     }
 
-    private void deactivteHint()
+    private void DeactivteHint()
     {
-        //TODO
+        Hint.enabled = false;
     }
-
-    private void closeDialogueBox()
-    {
-        dialogueUI.enabled = false;
-        dialogueUI.text = string.Empty;
-    }
-
-    public bool getCoroutineRunning() => coroutineRunning;
-    public void setCoroutineRunning(bool state) { coroutineRunning = state; }
 
 }
