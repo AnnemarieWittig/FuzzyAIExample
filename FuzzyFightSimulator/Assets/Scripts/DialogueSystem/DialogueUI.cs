@@ -23,7 +23,6 @@ public class DialogueUI : MonoBehaviour
         for (int i = 0; i < dialogueObject.Dialogue.Length; i++)
         {
             string dialogueText = dialogueObject.Dialogue[i];
-            Debug.Log(dialogueText);
             yield return Typewriter.Run(dialogueText, dialogueUI);
 
             ActivateHint();

@@ -31,6 +31,4 @@ public class CharacterDescription : MonoBehaviour
         CurrHP.text = hp.ToString() + "/100";
     }
 
-
-
 }

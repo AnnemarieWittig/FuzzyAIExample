@@ -9,20 +9,31 @@ public class MainMenuFunctionality : MonoBehaviour
     [SerializeField] public GameObject EnemyMenu;
     [SerializeField] public GameObject EndScreen;
     [SerializeField] public GameObject Credits;
+    [SerializeField] public GameObject CalculationOverview;
 
     public void OnPlayerMenuButton()
     {
-        SetActiveMenus(false, true, false, false, false);
+        SetActiveMenus(false, true, false, false, false, false);
     }
 
     public void OnEnemyMenuButton()
     {
-        SetActiveMenus(false, false, true, false, false);
+        SetActiveMenus(false, false, true, false, false, false);
+    }
+
+    public void OnCalculationOverviewButton()
+    {
+        CalculationOverview.SetActive(true);
+    }
+
+    public void OnCalculationOverviewClose()
+    {
+        CalculationOverview.SetActive(false);
     }
 
     public void ReturnToMainMenuFromOtherMenu()
     {
-        SetActiveMenus(true, false, false, false, false);
+        SetActiveMenus(true, false, false, false, false, false);
     }
 
     public void OnRestartButton()
@@ -49,16 +60,17 @@ public class MainMenuFunctionality : MonoBehaviour
     {
         TMP_Text endText = EndScreen.GetComponentInChildren<TMP_Text>();
         endText.text = dialogue.Dialogue[0];
-        SetActiveMenus(false, false, false, true, false);
+        SetActiveMenus(false, false, false, true, false, false);
     }
 
-    private void SetActiveMenus(bool main, bool player, bool enemy, bool endScreen, bool credits)
+    private void SetActiveMenus(bool main, bool player, bool enemy, bool endScreen, bool credits, bool calculation)
     {
         MainMenuUI.SetActive(main);
         PlayerMenu.SetActive(player);
         EnemyMenu.SetActive(enemy);
         EndScreen.SetActive(endScreen);
         Credits.SetActive(credits);
+        CalculationOverview.SetActive(calculation);
     }
 
     public void SetCharacterInMenus(Character player, Character enemy, CharacterDescription playerWin, CharacterDescription enemyWin)

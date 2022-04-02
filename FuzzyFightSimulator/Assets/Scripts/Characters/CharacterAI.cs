@@ -9,12 +9,15 @@ public class CharacterAI : MonoBehaviour
     [SerializeField] public InputLinguisticVariable Schaden;
     [SerializeField] public InputLinguisticVariable Trainingseinheiten;
     [SerializeField] public OutputLinguisticVariable Kampfentscheidung;
+    [SerializeField] public CalculationOverview Overview;
 
     public BattleChoices MakeBattleDecision()
     {
+        Overview.AddIntroduction(AiCharacter);
         Dictionary<BattleChoices, double> resultOfRuleEvaluation = RuleEvaluation();
         double defuzziedValue = GetDefuzziedValue(resultOfRuleEvaluation);
         BattleChoices translatedAction = TranslateDefuzziedValueToAction(defuzziedValue);
+        Overview.AddDecision(translatedAction);
         return translatedAction;
     }
 
@@ -31,7 +34,9 @@ public class CharacterAI : MonoBehaviour
     private double GetDefuzziedValue(Dictionary<BattleChoices, double> valuesAfterEvaluation)
     {
         List<Rectangle> generatedRectangles = Kampfentscheidung.calculateDefuzzyfication(valuesAfterEvaluation);
+        Overview.AddRectangles(generatedRectangles);
         double defuzziedValue = Aom(generatedRectangles);
+        Overview.AddAOMResult(defuzziedValue);
         return defuzziedValue;
     }
 
