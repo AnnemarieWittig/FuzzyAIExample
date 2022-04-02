@@ -41,13 +41,13 @@ public class CharacterMenu : MonoBehaviour
     private void AddListenersToUI()
     {
         HpSlider.onValueChanged.AddListener(delegate { SliderValueChanged(HpSlider, HpText); });
-        HpText.onValueChanged.AddListener(delegate { InputFieldValueChanged(HpSlider, HpText); });
+        HpText.onDeselect.AddListener(delegate { InputFieldValueChanged(HpSlider, HpText); });
         HitChanceSlider.onValueChanged.AddListener(delegate { SliderValueChanged(HitChanceSlider, HitChanceText); });
-        HitChanceText.onValueChanged.AddListener(delegate { InputFieldValueChanged(HitChanceSlider, HitChanceText); });
+        HitChanceText.onDeselect.AddListener(delegate { InputFieldValueChanged(HitChanceSlider, HitChanceText); });
         DamageSlider.onValueChanged.AddListener(delegate { SliderValueChanged(DamageSlider, DamageText); });
-        DamageText.onValueChanged.AddListener(delegate { InputFieldValueChanged(DamageSlider, DamageText); });
+        DamageText.onDeselect.AddListener(delegate { InputFieldValueChanged(DamageSlider, DamageText); });
         TrainingSlider.onValueChanged.AddListener(delegate { SliderValueChanged(TrainingSlider, TrainingText); });
-        TrainingText.onValueChanged.AddListener(delegate { InputFieldValueChanged(TrainingSlider, TrainingText); });
+        TrainingText.onDeselect.AddListener(delegate { InputFieldValueChanged(TrainingSlider, TrainingText); });
         CritToggle.onValueChanged.AddListener(delegate { CritToggleTriggered(); });
         HealToggle.onValueChanged.AddListener(delegate { HealToggleTriggered(); });
         CritChance.onDeselect.AddListener(delegate { RandomEventInputFieldChanged(CritChance); });
@@ -60,6 +60,7 @@ public class CharacterMenu : MonoBehaviour
         //Value is always within bounds
         float rounded = Mathf.Round(slider.value * 10.0f) * 0.1f;
         field.text = rounded.ToString();
+        slider.value = rounded;
     }
 
     private void InputFieldValueChanged(Slider slider, TMP_InputField field)
@@ -137,10 +138,10 @@ public class CharacterMenu : MonoBehaviour
 
     public void UpdateCharacterObject()
     {
-        Char.CurrentHP = HpSlider.value;
-        Char.Damage = DamageSlider.value;
-        Char.HitChance = HitChanceSlider.value;
-        Char.TrainingHours = TrainingSlider.value;
+        Char.CurrentHP = float.Parse(HpText.text);
+        Char.Damage = float.Parse(DamageText.text);
+        Char.HitChance = float.Parse(HitChanceText.text);
+        Char.TrainingHours = float.Parse(TrainingText.text);
         if (CritToggle.isOn)
         {
             Char.CritAllowance = true;

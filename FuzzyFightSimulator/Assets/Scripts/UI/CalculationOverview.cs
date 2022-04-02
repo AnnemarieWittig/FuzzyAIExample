@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class CalculationOverview : MonoBehaviour
 {
     [SerializeField] public TMP_Text Content;
-    [SerializeField] public GameObject Overview;
 
     public void AddIntroduction(Character character)
     {
@@ -51,8 +50,11 @@ public class CalculationOverview : MonoBehaviour
 
     private void AddContent(string content)
     {
-        Content.text += "\n";
-        Content.text += content;
+        if (Content != null)
+        {
+            Content.text += "\n";
+            Content.text += content;
+        }
     }
 
 }

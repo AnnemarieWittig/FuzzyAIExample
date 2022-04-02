@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-
 public class TestObjectRetriever
 {
     public static readonly double Delta = 0.000000000001;
@@ -48,7 +47,7 @@ public class TestObjectRetriever
 
     public static InputLinguisticVariable GetInputLinguisticVariable(string scriptableObjectName, string objectPath)
     {
-        string[] guids = AssetDatabase.FindAssets($"t:{nameof(InputLinguisticVariable)} {scriptableObjectName }", new[] { objectPath });
+        string[] guids = AssetDatabase.FindAssets($"t:{nameof(InputLinguisticVariable)} {scriptableObjectName}", new[] { objectPath });
         if (guids.Length == 0)
             Assert.Fail($"No {nameof(InputLinguisticVariable)} found named {scriptableObjectName}");
         if (guids.Length > 1)
@@ -59,7 +58,7 @@ public class TestObjectRetriever
 
     public static OutputLinguisticVariable GetOutputLinguisticVariable(string scriptableObjectName, string objectPath)
     {
-        string[] guids = AssetDatabase.FindAssets($"t:{nameof(OutputLinguisticVariable)} {scriptableObjectName }", new[] { objectPath });
+        string[] guids = AssetDatabase.FindAssets($"t:{nameof(OutputLinguisticVariable)} {scriptableObjectName}", new[] { objectPath });
         if (guids.Length == 0)
             Assert.Fail($"No {nameof(OutputLinguisticVariable)} found named {scriptableObjectName}");
         if (guids.Length > 1)
@@ -96,6 +95,7 @@ public class TestObjectRetriever
     public static CharacterAI GenerateCharacterAIMockup()
     {
         CharacterAI characterAi = TestObjectRetriever.CreateMonobehavior<CharacterAI>();
+        characterAi.Overview = TestObjectRetriever.CreateMonobehavior<CalculationOverview>();
         characterAi.Lebenspunkte = TestObjectRetriever.GetLebenspunkte();
         characterAi.Schaden = TestObjectRetriever.GetSchaden();
         characterAi.Trefferchance = TestObjectRetriever.GetTrefferchance();
@@ -103,6 +103,7 @@ public class TestObjectRetriever
         characterAi.Kampfentscheidung = TestObjectRetriever.GetKampfentscheidung();
         return characterAi;
     }
+
 
     public static Character GenerateCharacterMockup(float tc, float hp, float te, float dmg)
     {

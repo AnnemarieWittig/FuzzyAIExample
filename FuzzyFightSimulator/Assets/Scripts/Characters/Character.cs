@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
 
     [Header("General Information")]
     [SerializeField] public string CharacterName;
-    [SerializeField] public double TrainingHours;
+    [SerializeField] public float TrainingHours;
     private DefenseState _defenseState;
 
     [Header("Life Points")]
