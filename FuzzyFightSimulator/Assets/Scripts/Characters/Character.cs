@@ -111,7 +111,7 @@ public class Character : MonoBehaviour
         _defenseState = DefenseState.OPEN;
     }
 
-    public static bool CalculateSuccessOfAction(float chance)
+    public bool CalculateSuccessOfAction(float chance)
     {
         float hit = Random.Range(0f, 100 * 100f);
         if (chance > 0 && 0 <= hit && hit <= chance * 100f)
@@ -130,6 +130,11 @@ public class Character : MonoBehaviour
     public void StartDeathAnimation()
     {
         _animator.SetTrigger("Death");
+    }
+
+    public void StartEscapeAnimation()
+    {
+        _animator.SetTrigger("Escape");
     }
 
     public bool GetIsDead() { return isDead; }

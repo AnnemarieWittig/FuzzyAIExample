@@ -7,7 +7,7 @@ public class CharacterActions : MonoBehaviour
     {
         yield return StartCoroutine(dialogueUI.RunDialogue(attacker.AttackChoice));
 
-        if (Character.CalculateSuccessOfAction(attacker.HitChance))
+        if (attacker.CalculateSuccessOfAction(attacker.HitChance))
         {
             bool crit = attacker.Attack(defender, defenderWindow);
 

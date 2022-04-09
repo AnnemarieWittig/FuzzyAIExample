@@ -8,15 +8,15 @@ public class OutputLinguisticVariable : LinguisticVariable
 
     private void Start()
     {
-        checkForDuplicateEquations();
+        CheckForDuplicateEquations();
     }
 
-    public List<Rectangle> calculateDefuzzyfication(Dictionary<BattleChoices, double> membershipToLinguisticValues)
+    public List<Rectangle> CalculateDefuzzyfication(Dictionary<BattleChoices, double> membershipToLinguisticValues)
     {
         List<Rectangle> rectanglesForAOM = new List<Rectangle>();
         foreach (OutputTrapezeEquation membershipEquation in OutputEquations)
         {
-            Rectangle generatedRectangle = calculateRectangleFromMembershipEquation(membershipEquation, membershipToLinguisticValues);
+            Rectangle generatedRectangle = CalculateRectangleFromMembershipEquation(membershipEquation, membershipToLinguisticValues);
             if (generatedRectangle != null)
             {
                 generatedRectangle.SetCorrespondingBattleChoice(membershipEquation.CorrespongingEnum);
@@ -26,7 +26,7 @@ public class OutputLinguisticVariable : LinguisticVariable
         return rectanglesForAOM;
     }
 
-    private Rectangle calculateRectangleFromMembershipEquation(OutputTrapezeEquation membershipEquation, Dictionary<BattleChoices, double> membershipToLinguisticValues)
+    private Rectangle CalculateRectangleFromMembershipEquation(OutputTrapezeEquation membershipEquation, Dictionary<BattleChoices, double> membershipToLinguisticValues)
     {
         BattleChoices correspondingChoice = membershipEquation.CorrespongingEnum;
         double membershipValue = membershipToLinguisticValues[correspondingChoice];
@@ -36,7 +36,7 @@ public class OutputLinguisticVariable : LinguisticVariable
         return membershipEquation.CutTrapezeHorizontallyAndGenerateRectangle(equationToCut);
     }
 
-    private void checkForDuplicateEquations()
+    private void CheckForDuplicateEquations()
     {
         List<BattleChoices> counter = new List<BattleChoices>();
         foreach (OutputTrapezeEquation equation in OutputEquations)

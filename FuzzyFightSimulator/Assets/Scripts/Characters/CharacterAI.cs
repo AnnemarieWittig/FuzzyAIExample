@@ -33,7 +33,7 @@ public class CharacterAI : MonoBehaviour
 
     private double GetDefuzziedValue(Dictionary<BattleChoices, double> valuesAfterEvaluation)
     {
-        List<Rectangle> generatedRectangles = Kampfentscheidung.calculateDefuzzyfication(valuesAfterEvaluation);
+        List<Rectangle> generatedRectangles = Kampfentscheidung.CalculateDefuzzyfication(valuesAfterEvaluation);
         Overview.AddRectangles(generatedRectangles);
         double defuzziedValue = Aom(generatedRectangles);
         Overview.AddAOMResult(defuzziedValue);

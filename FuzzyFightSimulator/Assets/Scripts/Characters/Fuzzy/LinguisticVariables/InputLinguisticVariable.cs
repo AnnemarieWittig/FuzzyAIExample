@@ -12,12 +12,12 @@ public class InputLinguisticVariable : LinguisticVariable
         foreach (InputTrapezeEquation equation in InputTrapezeEquations)
         {
             BattleChoices eqChoice = equation.getWishedOutcome;
-            currentMembershipDegrees[eqChoice] = getHigherMembershipDegree(equation, currentMembershipDegrees[eqChoice], input);
+            currentMembershipDegrees[eqChoice] = GetHigherMembershipDegree(equation, currentMembershipDegrees[eqChoice], input);
         }
         return currentMembershipDegrees;
     }
 
-    private double getHigherMembershipDegree(InputTrapezeEquation equation, double currentValue, double input)
+    private double GetHigherMembershipDegree(InputTrapezeEquation equation, double currentValue, double input)
     {
         double otherValue = equation.CalculateY(input);
         if (otherValue > currentValue)

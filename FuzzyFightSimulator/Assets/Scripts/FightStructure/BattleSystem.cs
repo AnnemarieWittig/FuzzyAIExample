@@ -155,11 +155,13 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.PLAYERTURN)
         {
+            playerCharacter.StartEscapeAnimation();
             yield return StartCoroutine(DialoguePlayer.RunDialogue(playerCharacter.EscapeChoice));
             StartCoroutine(EndBattle(enemyCharacter.WinMessage, enemyCharacter.WinScreenMessage));
         }
         else if (state == BattleState.ENEMYTURN)
         {
+            enemyCharacter.StartEscapeAnimation();
             yield return StartCoroutine(DialoguePlayer.RunDialogue(enemyCharacter.EscapeChoice));
             StartCoroutine(EndBattle(playerCharacter.WinMessage, playerCharacter.WinScreenMessage));
         }

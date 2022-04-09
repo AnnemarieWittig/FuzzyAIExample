@@ -73,7 +73,7 @@ public class KampfentscheidungVariableTest
     {
         OutputLinguisticVariable kampfentscheidung = TestObjectRetriever.GetKampfentscheidung();
         Dictionary<BattleChoices, double> membervalues = TestObjectRetriever.GenerateFilledDictionary(4d / 5d, 7d / 13d, 6d / 13d);
-        List<Rectangle> defuzzyRectangles = kampfentscheidung.calculateDefuzzyfication(membervalues);
+        List<Rectangle> defuzzyRectangles = kampfentscheidung.CalculateDefuzzyfication(membervalues);
         Rectangle attackRectangle = new Rectangle(52d, 100d, 4d / 5d, BattleChoices.ATTACK);
         Rectangle blockRectangle = new Rectangle(235d / 13d, 610d / 13d, 7d / 13d, BattleChoices.BLOCK);
         Rectangle escapeRectangle = new Rectangle(0d, 235d / 13d, 6d / 13d, BattleChoices.ESCAPE);
@@ -87,7 +87,7 @@ public class KampfentscheidungVariableTest
     {
         OutputLinguisticVariable kampfentscheidung = TestObjectRetriever.GetKampfentscheidung();
         Dictionary<BattleChoices, double> membervalues = TestObjectRetriever.GenerateFilledDictionary(0d, 1d, 1d);
-        List<Rectangle> defuzzyRectangles = kampfentscheidung.calculateDefuzzyfication(membervalues);
+        List<Rectangle> defuzzyRectangles = kampfentscheidung.CalculateDefuzzyfication(membervalues);
         Rectangle attackRectangle = null; // A rectangle with the maximum of 0d should not be created;
         Rectangle blockRectangle = new Rectangle(25d, 40d, 1d, BattleChoices.BLOCK);
         Rectangle escapeRectangle = new Rectangle(0d, 10d, 1d, BattleChoices.ESCAPE);
@@ -101,7 +101,7 @@ public class KampfentscheidungVariableTest
     {
         OutputLinguisticVariable kampfentscheidung = TestObjectRetriever.GetKampfentscheidung();
         Dictionary<BattleChoices, double> membervalues = TestObjectRetriever.GenerateFilledDictionary(1d, 5d / 7d, 1d / 2d);
-        List<Rectangle> defuzzyRectangles = kampfentscheidung.calculateDefuzzyfication(membervalues);
+        List<Rectangle> defuzzyRectangles = kampfentscheidung.CalculateDefuzzyfication(membervalues);
         Rectangle attackRectangle = new Rectangle(55d, 100d, 1d, BattleChoices.ATTACK);
         Rectangle blockRectangle = new Rectangle(145d / 7d, 310d / 7d, 5d / 7d, BattleChoices.BLOCK);
         Rectangle escapeRectangle = new Rectangle(0d, 35d / 2d, 1d / 2d, BattleChoices.ESCAPE);
@@ -115,7 +115,7 @@ public class KampfentscheidungVariableTest
     {
         OutputLinguisticVariable kampfentscheidung = TestObjectRetriever.GetKampfentscheidung();
         Dictionary<BattleChoices, double> membervalues = TestObjectRetriever.GenerateFilledDictionary(1d, 4d / 13d, 1d);
-        List<Rectangle> defuzzyRectangles = kampfentscheidung.calculateDefuzzyfication(membervalues);
+        List<Rectangle> defuzzyRectangles = kampfentscheidung.CalculateDefuzzyfication(membervalues);
         Rectangle attackRectangle = new Rectangle(55d, 100d, 1d, BattleChoices.ATTACK);
         Rectangle blockRectangle = new Rectangle(190d / 13d, 655d / 13d, 4d / 13d, BattleChoices.BLOCK);
         Rectangle escapeRectangle = new Rectangle(0d, 10d, 1d, BattleChoices.ESCAPE);
@@ -129,7 +129,7 @@ public class KampfentscheidungVariableTest
     {
         OutputLinguisticVariable kampfentscheidung = TestObjectRetriever.GetKampfentscheidung();
         Dictionary<BattleChoices, double> membervalues = TestObjectRetriever.GenerateFilledDictionary(1d, 1d, 0d);
-        List<Rectangle> defuzzyRectangles = kampfentscheidung.calculateDefuzzyfication(membervalues);
+        List<Rectangle> defuzzyRectangles = kampfentscheidung.CalculateDefuzzyfication(membervalues);
         Rectangle attackRectangle = new Rectangle(55d, 100d, 1d, BattleChoices.ATTACK);
         Rectangle blockRectangle = new Rectangle(25d, 40d, 1d, BattleChoices.BLOCK);
         Rectangle escapeRectangle = null; // A rectangle with the maximum of 0d should not be created;
@@ -143,7 +143,7 @@ public class KampfentscheidungVariableTest
     {
         OutputLinguisticVariable kampfentscheidung = TestObjectRetriever.GetKampfentscheidung();
         Dictionary<BattleChoices, double> membervalues = TestObjectRetriever.GenerateFilledDictionary(1d / 4d, 1d / 2d, 3d / 4d);
-        List<Rectangle> defuzzyRectangles = kampfentscheidung.calculateDefuzzyfication(membervalues);
+        List<Rectangle> defuzzyRectangles = kampfentscheidung.CalculateDefuzzyfication(membervalues);
         Rectangle attackRectangle = new Rectangle(175d / 4d, 100d, 1d / 4d, BattleChoices.ATTACK);
         Rectangle blockRectangle = new Rectangle(35d / 2d, 95d / 2d, 1d / 2d, BattleChoices.BLOCK);
         Rectangle escapeRectangle = new Rectangle(0d, 55d / 4d, 3d / 4d, BattleChoices.ESCAPE);
@@ -157,7 +157,7 @@ public class KampfentscheidungVariableTest
     {
         OutputLinguisticVariable kampfentscheidung = TestObjectRetriever.GetKampfentscheidung();
         Dictionary<BattleChoices, double> membervalues = TestObjectRetriever.GenerateFilledDictionary(1d, 0d, 0d);
-        List<Rectangle> defuzzyRectangles = kampfentscheidung.calculateDefuzzyfication(membervalues);
+        List<Rectangle> defuzzyRectangles = kampfentscheidung.CalculateDefuzzyfication(membervalues);
         Rectangle attackRectangle = new Rectangle(55d, 100d, 1d, BattleChoices.ATTACK);
         Rectangle blockRectangle = null; // A rectangle with the maximum of 0d should not be created;
         Rectangle escapeRectangle = null; // A rectangle with the maximum of 0d should not be created;
