@@ -23,7 +23,7 @@ public class OutputTrapezeEquation : TrapezeEquation
     private Rectangle GenerateRectangleWithOneIntersection(LinearEquation horizontalLine, LinearEquation FirstLineToCut, double min, double max)
     {
         double height = horizontalLine.B;
-        double intersectionX = CalculacteIntersection(FirstLineToCut, horizontalLine);
+        double intersectionX = CalculateIntersection(FirstLineToCut, horizontalLine);
         double rectangleStart = intersectionX;
         double rectangleEnd = intersectionX;
         if (CalculateY(intersectionX + 0.1d) >= height)
@@ -36,8 +36,8 @@ public class OutputTrapezeEquation : TrapezeEquation
     private Rectangle GenerateRectangleWithTwoIntersections(LinearEquation horizontalLine, LinearEquation FirstLineToCut, LinearEquation SecondLineToCut)
     {
         double height = horizontalLine.B;
-        double firstIntersection = CalculacteIntersection(FirstLineToCut, horizontalLine);
-        double secondIntersection = CalculacteIntersection(SecondLineToCut, horizontalLine);
+        double firstIntersection = CalculateIntersection(FirstLineToCut, horizontalLine);
+        double secondIntersection = CalculateIntersection(SecondLineToCut, horizontalLine);
         if (firstIntersection <= secondIntersection)
             return new Rectangle(firstIntersection, secondIntersection, height);
         else

@@ -22,7 +22,7 @@ public class TrapezeEquation : ScriptableObject, TrapezeEquationInterface
         return -1;
     }
 
-    public double CalculacteIntersection(LinearEquation one, LinearEquation two)
+    public double CalculateIntersection(LinearEquation one, LinearEquation two)
     {
         double denominator = (double)one.M - two.M;
         double numerator = (double)two.B - one.B;

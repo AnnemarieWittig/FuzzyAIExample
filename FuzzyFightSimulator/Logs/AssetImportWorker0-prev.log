@@ -1,0 +1,222 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.26f1 (7298b473bc1a) revision 7510196'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19043) 64bit Professional' Language: 'de' Physical Memory: 8173 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+H:\Programme\UnityEditor\2020.3.26f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+H:/Uni/UnityTest/FuzzyAIExample/FuzzyFightSimulator
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+60606
+Successfully changed project path to: H:/Uni/UnityTest/FuzzyAIExample/FuzzyFightSimulator
+H:/Uni/UnityTest/FuzzyAIExample/FuzzyFightSimulator
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 67.00 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.26f1 (7298b473bc1a)
+[Subsystems] Discovering subsystems at path H:/Programme/UnityEditor/2020.3.26f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path H:/Uni/UnityTest/FuzzyAIExample/FuzzyFightSimulator/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 660 (ID=0x11c0)
+    Vendor:   
+    VRAM:     1998 MB
+    Driver:   30.0.14.7212
+Initialize mono
+Mono path[0] = 'H:/Programme/UnityEditor/2020.3.26f1/Editor/Data/Managed'
+Mono path[1] = 'H:/Programme/UnityEditor/2020.3.26f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'H:/Programme/UnityEditor/2020.3.26f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56080
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: H:/Programme/UnityEditor/2020.3.26f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: H:/Programme/UnityEditor/2020.3.26f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001891 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 71.11 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.818 seconds
+Domain Reload Profiling:
+	ReloadAssembly (818ms)
+		BeginReloadAssembly (68ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (661ms)
+			LoadAssemblies (67ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (234ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (41ms)
+			SetupLoadedEditorAssemblies (238ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (71ms)
+				BeforeProcessingInitializeOnLoad (17ms)
+				ProcessInitializeOnLoadAttributes (110ms)
+				ProcessInitializeOnLoadMethodAttributes (34ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004293 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 64.06 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.512 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1513ms)
+		BeginReloadAssembly (189ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (1249ms)
+			LoadAssemblies (117ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (437ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (76ms)
+			SetupLoadedEditorAssemblies (467ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (64ms)
+				BeforeProcessingInitializeOnLoad (98ms)
+				ProcessInitializeOnLoadAttributes (273ms)
+				ProcessInitializeOnLoadMethodAttributes (21ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.31 seconds
+Refreshing native plugins compatible for Editor in 1.63 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2246 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.0 MB.
+System memory in use after: 99.1 MB.
+
+Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 2681.
+Total: 4.134000 ms (FindLiveObjects: 0.229400 ms CreateObjectMapping: 0.086800 ms MarkObjects: 3.713900 ms  DeleteObjects: 0.102200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/ScriptableObjects/FuzzyEquations/Schaden
+  artifactKey: Guid(1487f385f69729a43b81815477919f12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations/Schaden using Guid(1487f385f69729a43b81815477919f12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f63f5291fd2b2f247626b56c279ae2b7') in 0.070045 seconds 
+  Import took 0.096245 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000570 seconds.
+  path: Assets/ScriptableObjects/FuzzyEquations/Schaden/Schaden.asset
+  artifactKey: Guid(2bf1a9f669d60844d81560bb392acf32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations/Schaden/Schaden.asset using Guid(2bf1a9f669d60844d81560bb392acf32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '183372a03339e4ed338fda4b19bb879d') in 0.083750 seconds 
+  Import took 0.101364 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000337 seconds.
+  path: Assets/ScriptableObjects/FuzzyEquations
+  artifactKey: Guid(1b1c38a7fdd404b4cbc30f6c60223916) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations using Guid(1b1c38a7fdd404b4cbc30f6c60223916) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7141f17a59ff5cc7d4d7ed0b26f8682') in 0.011426 seconds 
+  Import took 0.026708 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.477415 seconds.
+  path: Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation
+  artifactKey: Guid(0ce941eaf10fdbb4787023db130e55b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation using Guid(0ce941eaf10fdbb4787023db130e55b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd37a354560ec51f36acccbbd7c6a35bf') in 0.011875 seconds 
+  Import took 0.042061 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039742 seconds.
+  path: Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/0_wenig.asset
+  artifactKey: Guid(ca1fe85b460edd54f86b3df9a57a9e02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/0_wenig.asset using Guid(ca1fe85b460edd54f86b3df9a57a9e02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd053d30b219a65344e167ed4dd1fbe64') in 0.018987 seconds 
+  Import took 0.049495 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000391 seconds.
+  path: Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/2_viel.asset
+  artifactKey: Guid(75177b9500466c1438f7d4b6e5598896) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/2_viel.asset using Guid(75177b9500466c1438f7d4b6e5598896) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc5d23bfa69639049bdf9087d34d2d88') in 0.025220 seconds 
+  Import took 0.042941 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000298 seconds.
+  path: Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/1_maessig.asset
+  artifactKey: Guid(2560a4fa52afec84a84071c6c8ae2e5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/1_maessig.asset using Guid(2560a4fa52afec84a84071c6c8ae2e5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11f28a749c16d5426284fd75be158527') in 0.008283 seconds 
+  Import took 0.016177 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.990511 seconds.
+  path: Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/wenig
+  artifactKey: Guid(ab6307e5fec410341a3134fe60e75c1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/wenig using Guid(ab6307e5fec410341a3134fe60e75c1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be6cd5070f0afc7c8a117284ca98e6eb') in 0.016570 seconds 
+  Import took 0.040183 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.055915 seconds.
+  path: Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/wenig/0-10.asset
+  artifactKey: Guid(27b795df27b173f40ae1d555994da07e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/wenig/0-10.asset using Guid(27b795df27b173f40ae1d555994da07e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd334f9116546273b79531cb609942bd4') in 0.037192 seconds 
+  Import took 0.054514 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000508 seconds.
+  path: Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/wenig/10-15.asset
+  artifactKey: Guid(2808990ead985434da82d6e7a0737ba5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/wenig/10-15.asset using Guid(2808990ead985434da82d6e7a0737ba5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e5c05999bd8a0e974f7069711c53157') in 0.023469 seconds 
+  Import took 0.041235 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000333 seconds.
+  path: Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/wenig/15-100.asset
+  artifactKey: Guid(7c991ba29c2e1a04f8205e2ae052db9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/FuzzyEquations/Schaden/TrapezeEquation/wenig/15-100.asset using Guid(7c991ba29c2e1a04f8205e2ae052db9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a799685350b71ea283c4738e825aecb5') in 0.007517 seconds 
+  Import took 0.021866 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
